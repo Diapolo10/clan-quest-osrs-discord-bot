@@ -25,9 +25,9 @@ __init__.py:F401,F403,F405\
 
 
 [tool.poetry]
-name = 'project_name'
+name = 'growlery'
 version = '0.1.0'
-description = "A template Poetry project structure."
+description = "An OSRS Discord bot for Clan Quest."
 
 authors = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
 maintainers = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
@@ -36,9 +36,9 @@ include = ['CHANGELOG.md', 'LICENSE',]
 license = 'MIT'
 readme = 'README.md'
 
-homepage = 'https://pypi.org/project/project_name/'
-repository = 'https://github.com/Diapolo10/project_name'
-documentation = 'https://github.com/Diapolo10/project_name/tree/main/docs'
+homepage = 'https://pypi.org/project/clan-quest-osrs-discord-bot/'
+repository = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot'
+documentation = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/tree/main/docs'
 
 keywords = [
     'python3',
@@ -76,9 +76,8 @@ tox-gh-actions = '^3.0.0'
 
 
 [tool.poetry.urls]
-"Source code" = 'https://github.com/Diapolo10/project_name'
-"Tracker" = 'https://github.com/Diapolo10/project_name/issues'
-"Changelog" = 'https://github.com/Diapolo10/project_name/blob/main/CHANGELOG.md'
+"Tracker" = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/issues'
+"Changelog" = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/blob/main/CHANGELOG.md'
 
 
 [tool.pylint.'MESSAGES CONTROL']
@@ -106,12 +105,11 @@ testpaths = [
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py36, py37, py38, py39, pypy3
+envlist = py38, py39, py310, py311, pypy3
 isolated_build = True
 
 [gh-actions]
 python =
-    3.7: py37
     3.8: py38
     3.9: py39
     3.10: py310
