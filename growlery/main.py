@@ -1,6 +1,6 @@
-import os
-
 """Implements the core of the bot"""
+
+import os
 
 import discord
 from discord.ext import commands
