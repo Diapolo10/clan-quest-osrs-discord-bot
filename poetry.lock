@@ -152,6 +152,18 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "dpytest"
+version = "0.6.1"
+description = "A package that assists in writing tests for discord.py"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+"discord.py" = "*"
+pytest-asyncio = "*"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.1.0"
 description = "Backport of PEP 654 (exception groups)"
@@ -399,6 +411,21 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
 
 [[package]]
+name = "pytest-asyncio"
+version = "0.20.3"
+description = "Pytest support for asyncio"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+pytest = ">=6.1.0"
+
+[package.extras]
+docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
+testing = ["coverage (>=6.2)", "hypothesis (>=5.7.1)", "flaky (>=3.5.0)", "mypy (>=0.931)", "pytest-trio (>=0.7.0)"]
+
+[[package]]
 name = "pytest-cov"
 version = "4.0.0"
 description = "Pytest plugin for measuring coverage."
@@ -526,7 +553,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = '^3.8'
-content-hash = "2c6d63e5197a37da7b7444f2b98465973a9137f171ef35853142709fd47824a8"
+content-hash = "e63fa9912d034ff2f59b1e64aba82872283e2e22a5fe49e02e9d39c047e610bd"
 
 [metadata.files]
 aiohttp = []
@@ -545,6 +572,7 @@ coverage = []
 dill = []
 "discord.py" = []
 distlib = []
+dpytest = []
 exceptiongroup = []
 filelock = []
 flake8 = []
@@ -569,6 +597,7 @@ pylint = []
 pyproject-api = []
 pyproject-flake8 = []
 pytest = []
+pytest-asyncio = []
 pytest-cov = []
 python-dotenv = []
 tomli = [

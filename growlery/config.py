@@ -1,6 +1,7 @@
 """This file contains the global configuration settings for the Discord bot"""
 
 import os
+from enum import Enum
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -56,4 +57,17 @@ SKILL_NAMES = (
     "Construction",
 )
 
-RUNESCAPE_HISCORES_LITE_URL = 'http://services.runescape.com/m=hiscore{hiscores}{gamemode}/index_lite.ws?player={player_name}'
+RUNESCAPE_HISCORES_LITE_URL = (
+    'http://services.runescape.com/m=hiscore{hiscores}{gamemode}/index_lite.ws?player={player_name}'
+)
+
+
+class AccountType(str, Enum):
+    """Specifies different supported account types"""
+
+    NORMAL = ''
+    IRONMAN = '_ironman'
+    HARDCORE_IRONMAN = '_hardcore'
+    ULTIMATE_IRONMAN = '_ultimate'
+    SKILLER = '_skiller'
+    DEFENCE_PURE = '_skiller_defence'
