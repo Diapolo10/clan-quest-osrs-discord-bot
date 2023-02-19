@@ -1,47 +1,54 @@
 """Implements the core of the bot"""
 
-import os
+import logging
+import logging.config
 
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
 
-load_dotenv()
-
-TOKEN: str = os.getenv('DISCORD_TOKEN', 'NONEXISTENT')
-# GUILD: str = os.getenv('DISCORD_GUILD', 'NONEXISTENT')
-
-intents = discord.Intents.default()
-intents.members = True
-intents.message_content = True
-client = discord.Client(intents=intents)
-
-bot = commands.Bot(command_prefix='/', intents=intents)
-
-@client.event
-async def on_ready():
-    """Message indicating that the bot is online"""
-
-    print(f'{client.user.name} has connected to Discord!')
+from growlery.config import (
+    AUTH_TOKEN,
+    COMMAND_PREFIX,
+    LOG_CONFIG,
+    LOG_FILES,
+)
+from growlery.cogs import cog_list
 
 
-@bot.command('07hs', help="Prints out the stats of the given OSRS username")  # type: ignore
-async def default_hiscores(ctx: commands.Context, username: str | None = None):
-    """Prints out the stats of the given OSRS username"""
+logging.config.fileConfig(LOG_CONFIG, disable_existing_loggers=False, defaults={'logfilename': str(LOG_FILES)})
+logger = logging.getLogger(__name__)
 
-    print(f"Got username '{username}'!")
-    await ctx.send("Hi")
 
-# @client.event
-# async def on_ready():
-#     guild = discord.utils.get(client.guilds, name=GUILD)
+class MyBot(commands.Bot):
+    """Logs events related to the bot"""
 
-#     print(
-#         f'{client.user} is connected to the following guild:\n'
-#         f'{guild.name}(id: {guild.id})\n'
-#     )
+    async def on_ready(self):
+        """Message indicating that the bot is online"""
 
-#     members = '\n - '.join([member.name for member in guild.members])
-#     print(f'Guild Members:\n - {members}')
+        print(f"Installing cogs...")
+        logger.info("Installing cogs...")
 
-client.run(TOKEN)
+        for cog in cog_list:
+            await self.add_cog(cog(self))
+        
+        print(f"Logged in as {self.user}")
+        logger.info("Logged in as %s", self.user)
+
+    async def on_message(self, message):
+        """New message detected"""
+
+        if message.author == self.user:
+            return
+        
+        print(f"Message from {message.author}: {message.content}")
+        logger.info(f"Message from %s: %s", message.author, message.content)
+
+        await self.process_commands(message)
+
+
+if __name__ == '__main__':
+    intents = discord.Intents.default()
+    intents.message_content = True
+
+    bot = MyBot(command_prefix=COMMAND_PREFIX, intents=intents)
+    bot.run(AUTH_TOKEN)
