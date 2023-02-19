@@ -414,6 +414,17 @@ pytest = ">=4.6"
 testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtualenv"]
 
 [[package]]
+name = "python-dotenv"
+version = "0.21.1"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -515,7 +526,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = '^3.8'
-content-hash = "f4de5812111f4d05bffc151ce9117a72867797407d6e6b26a11a9e782ad39168"
+content-hash = "2c6d63e5197a37da7b7444f2b98465973a9137f171ef35853142709fd47824a8"
 
 [metadata.files]
 aiohttp = []
@@ -559,6 +570,7 @@ pyproject-api = []
 pyproject-flake8 = []
 pytest = []
 pytest-cov = []
+python-dotenv = []
 tomli = [
     {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
