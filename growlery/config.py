@@ -67,7 +67,7 @@ class AccountType(str, Enum):
 
     NORMAL = ''
     IRONMAN = '_ironman'
-    HARDCORE_IRONMAN = '_hardcore'
+    HARDCORE_IRONMAN = '_hardcore_ironman'
     ULTIMATE_IRONMAN = '_ultimate'
     SKILLER = '_skiller'
     DEFENCE_PURE = '_skiller_defence'
