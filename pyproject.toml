@@ -130,8 +130,10 @@ passenv = GITHUB_*
 deps =
     coverage
     coveralls[toml]
+    dpytest
     pytest
     pytest-cov
+    pytest-asyncio
     wheel
 commands =
     coverage run -m pytest
