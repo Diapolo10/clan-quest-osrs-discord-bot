@@ -132,6 +132,7 @@ deps =
     coveralls[toml]
     pytest
     pytest-cov
+    pytest-asyncio
     wheel
 commands =
     coverage run -m pytest
