@@ -25,23 +25,23 @@ class MyBot(commands.Bot):
     async def on_ready(self):
         """Message indicating that the bot is online"""
 
-        print(f"Installing cogs...")
+        print("Installing cogs...")
         logger.info("Installing cogs...")
 
         for cog in cog_list:
             await self.add_cog(cog(self))
-        
+
         print(f"Logged in as {self.user}")
         logger.info("Logged in as %s", self.user)
 
-    async def on_message(self, message):
+    async def on_message(self, message):  # pylint: disable=W0221
         """New message detected"""
 
         if message.author == self.user:
             return
-        
+
         print(f"Message from {message.author}: {message.content}")
-        logger.info(f"Message from %s: %s", message.author, message.content)
+        logger.info("Message from %s: %s", message.author, message.content)
 
         await self.process_commands(message)
 
