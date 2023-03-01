@@ -9,6 +9,7 @@ relative_files = true
 omit = [
     '.tox/*',
     'tests/*',
+    'main.py',
 ]
 
 
@@ -61,7 +62,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = '^3.10'
 aiohttp = '^3.8.4'
-"discord.py" = '^2.1.1'
+"discord.py" = '^2.2.0'
 python-dotenv = '^0.21.1'
 
 [tool.poetry.dev-dependencies]

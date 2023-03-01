@@ -31,30 +31,101 @@ if not LOG_FILES.exists():
 
 
 SKILL_NAMES = (
-    "Total",
-    "Attack",
-    "Defence",
-    "Strength",
-    "Hitpoints",
-    "Ranged",
-    "Prayer",
-    "Magic",
-    "Cooking",
-    "Woodcutting",
-    "Fletching",
-    "Fishing",
-    "Firemaking",
-    "Crafting",
-    "Smithing",
-    "Mining",
-    "Herblore",
-    "Agility",
-    "Thieving",
-    "Slayer",
-    "Farming",
-    "Runecraft",
-    "Hunter",
-    "Construction",
+    'Total',
+    'Attack',
+    'Defence',
+    'Strength',
+    'Hitpoints',
+    'Ranged',
+    'Prayer',
+    'Magic',
+    'Cooking',
+    'Woodcutting',
+    'Fletching',
+    'Fishing',
+    'Firemaking',
+    'Crafting',
+    'Smithing',
+    'Mining',
+    'Herblore',
+    'Agility',
+    'Thieving',
+    'Slayer',
+    'Farming',
+    'Runecraft',
+    'Hunter',
+    'Construction',
+)
+
+MINIGAME_NAMES = (
+    'Unknown Minigame',
+    'Bounty Hunter - Hunter',
+    'Bounty Hunter - Rogue',
+    'Clue Scrolls (all)',
+    'Clue Scrolls (beginner)',
+    'Clue Scrolls (easy)',
+    'Clue Scrolls (medium)',
+    'Clue Scrolls (hard)',
+    'Clue Scrolls (elite)',
+    'Clue Scrolls (master)',
+    'LMS - Rank',
+    'PvP Arena - Rank',
+    'Soul Wars Zeal',
+    'Rifts closed',
+)
+
+BOSS_NAMES = (
+    'Abyssal Sire',
+    'Alchemical Hydra',
+    'Barrows Chests',
+    'Bryophyta',
+    'Callisto',
+    'Cerberus',
+    'Chambers of Xeric',
+    'Chambers of Xeric: Challenge Mode',
+    'Chaos Elemental',
+    'Chaos Fanatic',
+    'Commander Zilyana',
+    'Corporeal Beast',
+    'Crazy Archaeologist',
+    'Dagannoth Prime',
+    'Dagannoth Rex',
+    'Dagannoth Supreme',
+    'Deranged Archaeologist',
+    'General Graardor',
+    'Giant Mole',
+    'Grotesque Guardians',
+    'Hespori',
+    'Kalphite Queen',
+    'King Black Dragon',
+    'Kraken',
+    'Kree\'Arra',
+    'K\'ril Tsutsaroth',
+    'Mimic',
+    'Nex',
+    'Nightmare',
+    'Phosani\'s Nightmare',
+    'Obor',
+    'Phantom Muspah',
+    'Sarachnis',
+    'Scorpia',
+    'Skotizo',
+    'Tempoross',
+    'The Gauntlet',
+    'The Corrupted Gauntlet',
+    'Theatre of Blood',
+    'Theatre of Blood: Hard Mode',
+    'Thermonuclear Smoke Devil',
+    'Tombs of Amascut',
+    'Tombs of Amascut: Expert Mode',
+    'TzKal-Zuk',
+    'TzTok-Jad',
+    'Venenatis',
+    'Vet\'ion',
+    'Vorkath',
+    'Wintertodt',
+    'Zalcano',
+    'Zulrah',
 )
 
 RUNESCAPE_HISCORES_LITE_URL = (
@@ -71,3 +142,14 @@ class AccountType(str, Enum):
     ULTIMATE_IRONMAN = '_ultimate'
     SKILLER = '_skiller'
     DEFENCE_PURE = '_skiller_defence'
+
+
+class AccountTypeName(str, Enum):
+    """Specifies names for different supported account types"""
+
+    NORMAL = ''
+    IRONMAN = 'Ironman'
+    HARDCORE_IRONMAN = 'Hardcore'
+    ULTIMATE_IRONMAN = 'Ultimate'
+    SKILLER = 'Skiller'
+    DEFENCE_PURE = 'Defence Pure'
