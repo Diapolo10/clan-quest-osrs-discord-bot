@@ -15,6 +15,7 @@ async def bot():
     """Creates a bot instance for testing"""
 
     intents = discord.Intents.default()
+    intents.members = True
     intents.message_content = True
 
     _bot = commands.Bot(command_prefix=COMMAND_PREFIX, intents=intents)
