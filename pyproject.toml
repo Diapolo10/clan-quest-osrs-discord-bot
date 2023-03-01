@@ -28,7 +28,7 @@ __init__.py:F401,F403,F405\
 
 [tool.poetry]
 name = 'growlery'
-version = '0.2.0'
+version = '0.2.1'
 description = "An OSRS Discord bot for Clan Quest."
 
 authors = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
