@@ -10,6 +10,7 @@ omit = [
     '.tox/*',
     'tests/*',
     'main.py',
+    '__main__.py',
 ]
 
 
@@ -27,7 +28,7 @@ __init__.py:F401,F403,F405\
 
 [tool.poetry]
 name = 'growlery'
-version = '0.1.0'
+version = '0.2.0'
 description = "An OSRS Discord bot for Clan Quest."
 
 authors = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
@@ -63,7 +64,7 @@ classifiers = [
 python = '^3.10'
 aiohttp = '^3.8.4'
 "discord.py" = '^2.2.0'
-python-dotenv = '^0.21.1'
+python-dotenv = '^1.0.0'
 
 [tool.poetry.dev-dependencies]
 coverage = {version = '^7.2.1', extras = ['toml',]}

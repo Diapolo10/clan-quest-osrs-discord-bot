@@ -144,3 +144,6 @@ tests/reports
 
 # Logs
 logs/
+
+# Auto-generated files
+TEMP_CHANGELOG.md
