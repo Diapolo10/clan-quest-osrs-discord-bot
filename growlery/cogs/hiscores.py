@@ -16,7 +16,7 @@ from growlery.table import SkillsTable, MinigamesTable, BossesTable
 logger = logging.getLogger(__name__)
 
 
-class Hiscores(commands.Cog):
+class Hiscores(commands.Cog):  # pylint: disable=R0904
     """Hiscores commands"""
 
     @commands.command('07hs')
@@ -128,7 +128,11 @@ class Hiscores(commands.Cog):
         await self.reply_with_bosses(ctx, username, AccountType.DEFENCE_PURE, AccountTypeName.DEFENCE_PURE)
 
     @classmethod
-    async def reply_with_hiscores(cls, ctx: commands.Context, username: str | None, account_type: AccountType, account_type_name: AccountTypeName):
+    async def reply_with_hiscores(cls,
+                                  ctx: commands.Context,
+                                  username: str | None,
+                                  account_type: AccountType,
+                                  account_type_name: AccountTypeName):
         """Replies to the chat with the given username's hiscores"""
 
         result = "Hiscores not found."
@@ -144,7 +148,11 @@ class Hiscores(commands.Cog):
         await ctx.send(result)
 
     @classmethod
-    async def reply_with_minigames(cls, ctx: commands.Context, username: str | None, account_type: AccountType, account_type_name: AccountTypeName):
+    async def reply_with_minigames(cls,
+                                   ctx: commands.Context,
+                                   username: str | None,
+                                   account_type: AccountType,
+                                   account_type_name: AccountTypeName):
         """Replies to the chat with the given username's hiscores"""
 
         result = "Hiscores not found."
@@ -160,7 +168,11 @@ class Hiscores(commands.Cog):
         await ctx.send(result)
 
     @classmethod
-    async def reply_with_bosses(cls, ctx: commands.Context, username: str | None, account_type: AccountType, account_type_name: AccountTypeName):
+    async def reply_with_bosses(cls,
+                                ctx: commands.Context,
+                                username: str | None,
+                                account_type: AccountType,
+                                account_type_name: AccountTypeName):
         """Replies to the chat with the given username's hiscores"""
 
         result = "Hiscores not found."

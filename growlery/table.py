@@ -12,7 +12,12 @@ from growlery.config import (
 class Table:
     """Used to generate ASCII tables"""
 
-    def __init__(self, header_text: str, table_data: list[list[str]], row_names: tuple[str, ...], col_names: tuple[str, ...], cols_with_commas: tuple[str, ...] = ()):
+    def __init__(self,  # pylint: disable=R0913
+                 header_text: str,
+                 table_data: list[list[str]],
+                 row_names: tuple[str, ...],
+                 col_names: tuple[str, ...],
+                 cols_with_commas: tuple[str, ...] = ()):
         """Initialises a table"""
 
         self.header_text = header_text
@@ -52,7 +57,7 @@ class Table:
             f'{col:^{length}}'
             for col, length in self.longest_cells_per_col.items()
         )
-    
+
     @property
     def column_lengths(self) -> list[int]:
         """Returns the lengths of the longest cells in each column"""
@@ -76,15 +81,16 @@ class Table:
             column_row,
         ]
         return header_rows
-    
+
     def generate_body(self) -> list[str]:
         """Generates the table body"""
 
         body = []
         for row_name, *data in self.data_rows:
             contents = ' │ '.join(
-                f'{int(data_point):>{self.longest_cells_per_col[col_name]}{"," if col_name in self.cols_with_commas else ""}}'
+                f'{int(data_point):>{self.longest_cells_per_col[col_name]}{colon}}'
                 for col_name, data_point in zip(self.col_names[1:], data)
+                if (colon := "," if col_name in self.cols_with_commas else "") is not None
             )
             body.append(
                 f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║'
@@ -114,7 +120,11 @@ class Table:
 class SkillsTable(Table):
     """Used to create ASCII tables for skill hiscores"""
 
-    def __init__(self, username: str, account_type: AccountType, account_type_name: AccountTypeName, table_data: list[list[str]]):
+    def __init__(self,
+                 username: str,
+                 account_type: AccountType,
+                 account_type_name: AccountTypeName,
+                 table_data: list[list[str]]):
         """Handles converting the data for the parent class"""
 
         header_text = f"STATS FOR {username.replace('_', ' ').upper()}"
@@ -135,7 +145,11 @@ class SkillsTable(Table):
 class MinigamesTable(Table):
     """Used to create ASCII tables for minigame hiscores"""
 
-    def __init__(self, username: str, account_type: AccountType, account_type_name: AccountTypeName, table_data: list[list[str]]):
+    def __init__(self,
+                 username: str,
+                 account_type: AccountType,
+                 account_type_name: AccountTypeName,
+                 table_data: list[list[str]]):
         """Handles converting the data for the parent class"""
 
         sliced_data = table_data[len(SKILL_NAMES):]
@@ -157,7 +171,11 @@ class MinigamesTable(Table):
 class BossesTable(Table):
     """Used to create ASCII tables for boss hiscores"""
 
-    def __init__(self, username: str, account_type: AccountType, account_type_name: AccountTypeName, table_data: list[list[str]]):
+    def __init__(self,
+                 username: str,
+                 account_type: AccountType,
+                 account_type_name: AccountTypeName,
+                 table_data: list[list[str]]):
         """Handles converting the data for the parent class"""
 
         sliced_data = table_data[len(SKILL_NAMES)+len(MINIGAME_NAMES):]

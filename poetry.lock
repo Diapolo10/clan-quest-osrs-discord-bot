@@ -1014,7 +1014,7 @@ testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtuale
 
 [[package]]
 name = "python-dotenv"
-version = "1.0.0"
+version = "0.21.1"
 description = "Read key-value pairs from a .env file and set them as environment variables"
 category = "main"
 optional = false
