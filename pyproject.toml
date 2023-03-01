@@ -64,7 +64,7 @@ classifiers = [
 python = '^3.10'
 aiohttp = '^3.8.4'
 "discord.py" = '^2.2.0'
-python-dotenv = '^0.21.1'
+python-dotenv = '^1.0.0'
 
 [tool.poetry.dev-dependencies]
 coverage = {version = '^7.2.1', extras = ['toml',]}
