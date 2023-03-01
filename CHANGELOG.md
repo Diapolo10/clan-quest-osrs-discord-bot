@@ -50,25 +50,74 @@ Lorem Ipsum dolor sit amet.
 <!--
 _______________________________________________________________________________
 
-## [0.1.1] - YYYY-MM-DD
+## [0.2.0] - 2023-03-01
 
-In-progress update goes here.
+Adds logging, full hiscores support (excluding RSN saving for Discord IDs),
+plenty of workflow updates, removed vulnerable dependencies, added unit tests,
+and updated `README.md`.
 
 ### Added
 
-- Stuff
+- Logging to files
+- Support for fetching the following data from hiscores for all supported game
+  modes, except Group Ironman:
+  - Skill levels
+  - Minigame hiscores
+  - Boss kills
+- Unit tests for hiscores
+- Preliminary support for launching the program as a module
 
 ### Changed
 
+- Updated `README.md`
 - Updated localisation files
+
+### Removed
+
+- Removed `py` as an indirect dependency by upgrading the minimum Python
+  version to accommodate for Tox no longer needing it
+- Removed `pyproject-flake8` as a dependency, replacing it with
+  `flake8-pyproject`, to make the dependencies more robust to changes.
 
 -->
 
 _______________________________________________________________________________
 
-## [0.1.0] - YYYY-MM-DD
+## [0.2.0] - 2023-03-01
 
-This is the initial version of the project.
+Adds logging, full hiscores support (excluding RSN saving for Discord IDs),
+plenty of workflow updates, removed vulnerable dependencies, added unit tests,
+and updated `README.md`.
+
+### Added
+
+- Logging to files
+- Support for fetching the following data from hiscores for all supported game
+  modes, except Group Ironman:
+  - Skill levels
+  - Minigame hiscores
+  - Boss kills
+- Unit tests for hiscores
+- Preliminary support for launching the program as a module
+
+### Changed
+
+- Updated `README.md`
+- Updated localisation files
+
+### Removed
+
+- Removed `py` as an indirect dependency by upgrading the minimum Python
+  version to accommodate for Tox no longer needing it
+- Removed `pyproject-flake8` as a dependency, replacing it with
+  `flake8-pyproject`, to make the dependencies more robust to changes.
+
+_______________________________________________________________________________
+
+## [0.1.0] - 2023-02-18
+
+This is the initial version of the project. No official release has been
+published as there's basically no functionality.
 
 ### Added
 
