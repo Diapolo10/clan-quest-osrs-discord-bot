@@ -7,66 +7,183 @@ from discord.ext import commands
 
 from growlery.config import (
     AccountType,
+    AccountTypeName,
     RUNESCAPE_HISCORES_LITE_URL,
-    SKILL_NAMES,
 )
 from growlery.http_request import fetch_page_content
+from growlery.table import SkillsTable, MinigamesTable, BossesTable
 
 logger = logging.getLogger(__name__)
 
 
-class Hiscores(commands.Cog):
+class Hiscores(commands.Cog):  # pylint: disable=R0904
     """Hiscores commands"""
 
     @commands.command('07hs')
     async def default_hiscores(self, ctx: commands.Context, *, username: str | None = None):
         """Fetches default hiscores for the given username"""
 
-        await self.reply_with_hiscores(ctx, username, AccountType.NORMAL)
+        await self.reply_with_hiscores(ctx, username, AccountType.NORMAL, AccountTypeName.NORMAL)
 
     @commands.command('07hs-im')
     async def ironman_hiscores(self, ctx: commands.Context, *, username: str | None = None):
         """Fetches ironman hiscores for the given username"""
 
-        await self.reply_with_hiscores(ctx, username, AccountType.IRONMAN)
+        await self.reply_with_hiscores(ctx, username, AccountType.IRONMAN, AccountTypeName.IRONMAN)
 
     @commands.command('07hs-hcim')
     async def hardcore_ironman_hiscores(self, ctx: commands.Context, *, username: str | None = None):
         """Fetches hardcore ironman hiscores for the given username"""
 
-        await self.reply_with_hiscores(ctx, username, AccountType.HARDCORE_IRONMAN)
+        await self.reply_with_hiscores(ctx, username, AccountType.HARDCORE_IRONMAN, AccountTypeName.HARDCORE_IRONMAN)
 
     @commands.command('07hs-uim')
     async def ultimate_ironman_hiscores(self, ctx: commands.Context, *, username: str | None = None):
         """Fetches ultimate ironman hiscores for the given username"""
 
-        await self.reply_with_hiscores(ctx, username, AccountType.ULTIMATE_IRONMAN)
+        await self.reply_with_hiscores(ctx, username, AccountType.ULTIMATE_IRONMAN, AccountTypeName.ULTIMATE_IRONMAN)
 
     @commands.command('07hs-skiller')
     async def skiller_hiscores(self, ctx: commands.Context, *, username: str | None = None):
         """Fetches skiller hiscores for the given username"""
 
-        await self.reply_with_hiscores(ctx, username, AccountType.SKILLER)
+        await self.reply_with_hiscores(ctx, username, AccountType.SKILLER, AccountTypeName.SKILLER)
 
     @commands.command('07hs-def')
     async def defence_pure_hiscores(self, ctx: commands.Context, *, username: str | None = None):
         """Fetches 1 Defence hiscores for the given username"""
 
-        await self.reply_with_hiscores(ctx, username, AccountType.DEFENCE_PURE)
+        await self.reply_with_hiscores(ctx, username, AccountType.DEFENCE_PURE, AccountTypeName.DEFENCE_PURE)
+
+    @commands.command('07hs-minigames')
+    async def default_minigames(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches default minigame hiscores for the given username"""
+
+        await self.reply_with_minigames(ctx, username, AccountType.NORMAL, AccountTypeName.NORMAL)
+
+    @commands.command('07hs-im-minigames')
+    async def ironman_minigames(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches ironman minigame hiscores for the given username"""
+
+        await self.reply_with_minigames(ctx, username, AccountType.IRONMAN, AccountTypeName.IRONMAN)
+
+    @commands.command('07hs-hcim-minigames')
+    async def hardcore_ironman_minigames(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches hardcore ironman minigame hiscores for the given username"""
+
+        await self.reply_with_minigames(ctx, username, AccountType.HARDCORE_IRONMAN, AccountTypeName.HARDCORE_IRONMAN)
+
+    @commands.command('07hs-uim-minigames')
+    async def ultimate_ironman_minigames(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches ultimate ironman minigame hiscores for the given username"""
+
+        await self.reply_with_minigames(ctx, username, AccountType.ULTIMATE_IRONMAN, AccountTypeName.ULTIMATE_IRONMAN)
+
+    @commands.command('07hs-skiller-minigames')
+    async def skiller_minigames(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches skiller minigame hiscores for the given username"""
+
+        await self.reply_with_minigames(ctx, username, AccountType.SKILLER, AccountTypeName.SKILLER)
+
+    @commands.command('07hs-def-minigames')
+    async def defence_pure_minigames(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches 1 Defence minigame hiscores for the given username"""
+
+        await self.reply_with_minigames(ctx, username, AccountType.DEFENCE_PURE, AccountTypeName.DEFENCE_PURE)
+
+    @commands.command('07hs-bosses')
+    async def default_bosses(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches default boss hiscores for the given username"""
+
+        await self.reply_with_bosses(ctx, username, AccountType.NORMAL, AccountTypeName.NORMAL)
+
+    @commands.command('07hs-im-bosses')
+    async def ironman_bosses(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches ironman boss hiscores for the given username"""
+
+        await self.reply_with_bosses(ctx, username, AccountType.IRONMAN, AccountTypeName.IRONMAN)
+
+    @commands.command('07hs-hcim-bosses')
+    async def hardcore_ironman_bosses(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches hardcore ironman boss hiscores for the given username"""
+
+        await self.reply_with_bosses(ctx, username, AccountType.HARDCORE_IRONMAN, AccountTypeName.HARDCORE_IRONMAN)
+
+    @commands.command('07hs-uim-bosses')
+    async def ultimate_ironman_bosses(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches ultimate ironman boss hiscores for the given username"""
+
+        await self.reply_with_bosses(ctx, username, AccountType.ULTIMATE_IRONMAN, AccountTypeName.ULTIMATE_IRONMAN)
+
+    @commands.command('07hs-skiller-bosses')
+    async def skiller_bosses(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches skiller boss hiscores for the given username"""
+
+        await self.reply_with_bosses(ctx, username, AccountType.SKILLER, AccountTypeName.SKILLER)
+
+    @commands.command('07hs-def-bosses')
+    async def defence_pure_bosses(self, ctx: commands.Context, *, username: str | None = None):
+        """Fetches 1 Defence boss hiscores for the given username"""
+
+        await self.reply_with_bosses(ctx, username, AccountType.DEFENCE_PURE, AccountTypeName.DEFENCE_PURE)
 
     @classmethod
-    async def reply_with_hiscores(cls, ctx: commands.Context, username: str | None, account_type: AccountType):
+    async def reply_with_hiscores(cls,
+                                  ctx: commands.Context,
+                                  username: str | None,
+                                  account_type: AccountType,
+                                  account_type_name: AccountTypeName):
         """Replies to the chat with the given username's hiscores"""
 
         result = "Hiscores not found."
 
         if username is None:
-            logger.warning("Username assigning to Discord profile not implemented yet")
-            raise NotImplementedError("Username assigning not implemented yet")
+            logger.warning(result := "Username assigning to Discord profile not implemented yet.")
+            return await ctx.send(result)
 
         hiscores = await cls._fetch_hiscores(username, account_type)
         if hiscores:
-            result = await cls._format_table(username, hiscores, account_type)
+            result = SkillsTable(username, account_type, account_type_name, hiscores).render_table()
+
+        await ctx.send(result)
+
+    @classmethod
+    async def reply_with_minigames(cls,
+                                   ctx: commands.Context,
+                                   username: str | None,
+                                   account_type: AccountType,
+                                   account_type_name: AccountTypeName):
+        """Replies to the chat with the given username's hiscores"""
+
+        result = "Hiscores not found."
+
+        if username is None:
+            logger.warning(result := "Username assigning to Discord profile not implemented yet.")
+            return await ctx.send(result)
+
+        hiscores = await cls._fetch_hiscores(username, account_type)
+        if hiscores:
+            result = MinigamesTable(username, account_type, account_type_name, hiscores).render_table()
+
+        await ctx.send(result)
+
+    @classmethod
+    async def reply_with_bosses(cls,
+                                ctx: commands.Context,
+                                username: str | None,
+                                account_type: AccountType,
+                                account_type_name: AccountTypeName):
+        """Replies to the chat with the given username's hiscores"""
+
+        result = "Hiscores not found."
+
+        if username is None:
+            logger.warning(result := "Username assigning to Discord profile not implemented yet.")
+            return await ctx.send(result)
+
+        hiscores = await cls._fetch_hiscores(username, account_type)
+        if hiscores:
+            result = BossesTable(username, account_type, account_type_name, hiscores).render_table()
 
         await ctx.send(result)
 
@@ -90,71 +207,3 @@ class Hiscores(commands.Cog):
         ]
 
         return hiscores
-
-    @staticmethod
-    async def _format_table(username: str, hiscores_data: list[list[str]], account_type: AccountType) -> str:
-        """Returns a formatted table of OSRS hiscores stats"""
-
-        table_width = 50
-
-        longest = {
-            'Skill': 5,
-            'Level': 5,
-            'Experience': 10,
-            'Rank': 4,
-        }
-        skill_rows = []
-
-        for skill, (rank, level, exp) in zip(SKILL_NAMES, hiscores_data):
-            if len(skill) > longest['Skill']:
-                longest['Skill'] = len(skill)
-            if len(level) > longest['Level']:
-                longest['Level'] = len(level)
-            if len(exp) > longest['Experience']:
-                longest['Experience'] = len(exp)
-            if len(rank) > longest['Rank']:
-                longest['Rank'] = len(rank)
-            skill_rows.append([skill, level, exp, rank])
-
-        for key in ('Experience', 'Rank'):
-            comma_count = max((longest[key] - 1) // 3, 0)
-            longest[key] += comma_count
-
-        columns = ' | '.join(
-            f'{col:^{length}}'
-            for col, length in longest.items()
-        )
-
-        table_width = len(columns) + 4
-        header_text = f"VIEWING STATS FOR {username.replace('_', ' ').upper()}"
-        if account_type != AccountType.NORMAL:
-            header_text += f" [{account_type.replace('_', ' ').lstrip().upper()}]"
-        table_rows = [
-            f"╔{'═' * (table_width-2)}╗",
-            f"║{header_text:^{table_width-2}}║",
-            f"╠{'═' * (table_width-2)}╣",
-            f"║ {columns} ║",
-            (
-                f"╟─{'─' * longest['Skill']}─"
-                f"┬─{'─' * longest['Level']}─"
-                f"┬─{'─' * longest['Experience']}─"
-                f"┬─{'─' * longest['Rank']}─╢"
-            ),
-        ]
-
-        for skill, level, exp, rank in skill_rows:
-            table_rows.append(
-                f"║ {skill:<{longest['Skill']}} "
-                f"│ {level:>{longest['Level']}} "
-                f"│ {int(exp):>{longest['Experience']},} "
-                f"│ {int(rank):>{longest['Rank']},} ║"
-            )
-
-        table_rows.append(
-            f"╚═{'═' * longest['Skill']}═"
-            f"╧═{'═' * longest['Level']}═"
-            f"╧═{'═' * longest['Experience']}═"
-            f"╧═{'═' * longest['Rank']}═╝"
-        )
-
-        return '```text\n'+'\n'.join(table_rows)+'\n```'
