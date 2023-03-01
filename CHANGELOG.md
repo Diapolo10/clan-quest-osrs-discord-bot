@@ -50,36 +50,45 @@ Lorem Ipsum dolor sit amet.
 <!--
 _______________________________________________________________________________
 
-## [0.2.0] - 2023-03-01
+## [0.2.1] - 2023-03-01
 
-Adds logging, full hiscores support (excluding RSN saving for Discord IDs),
-plenty of workflow updates, removed vulnerable dependencies, added unit tests,
-and updated `README.md`.
+Small fixes to `README.md` and project matadata.
 
 ### Added
 
-- Logging to files
-- Support for fetching the following data from hiscores for all supported game
-  modes, except Group Ironman:
-  - Skill levels
-  - Minigame hiscores
-  - Boss kills
-- Unit tests for hiscores
-- Preliminary support for launching the program as a module
+- `py.typed`-file to announce the package uses type hints
 
 ### Changed
 
-- Updated `README.md`
 - Updated localisation files
 
-### Removed
+### Fixed
 
-- Removed `py` as an indirect dependency by upgrading the minimum Python
-  version to accommodate for Tox no longer needing it
-- Removed `pyproject-flake8` as a dependency, replacing it with
-  `flake8-pyproject`, to make the dependencies more robust to changes.
+- PyPI badges in `README.md` now work correctly, and some broken badges were
+  removed
+- Corrected the list of supported Python versions
 
 -->
+
+_______________________________________________________________________________
+
+## [0.2.1] - 2023-03-01
+
+Small fixes to `README.md` and project matadata.
+
+### Added
+
+- `py.typed`-file to announce the package uses type hints
+
+### Changed
+
+- Updated localisation files
+
+### Fixed
+
+- PyPI badges in `README.md` now work correctly, and some broken badges were
+  removed
+- Corrected the list of supported Python versions
 
 _______________________________________________________________________________
 
