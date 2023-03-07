@@ -68,7 +68,7 @@ coverage = {version = '^7.2.1', extras = ['toml',]}
 dpytest = '^0.6.2'
 flake8 = '^6.0.0'
 flake8-pyproject = '^1.2.2'
-mypy = '^1.0.1'
+mypy = '^1.1.1'
 pylint = '^2.16.2'
 pytest = '^7.2.1'
 pytest-asyncio = '^0.20.3'
