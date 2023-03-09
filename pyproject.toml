@@ -17,7 +17,7 @@ omit = [
 [tool.flake8]
 max-line-length = 120
 extend-ignore = ''  # https://www.flake8rules.com/
-max-complexity = 15  # Info: https://en.wikipedia.org/wiki/Cyclomatic_complexity
+max-complexity = 7  # Info: https://en.wikipedia.org/wiki/Cyclomatic_complexity
 per-file-ignores = """\
 # F401: Ignore "unused" imports
 # F403: Ignore star imports
@@ -28,7 +28,7 @@ __init__.py:F401,F403,F405\
 
 [tool.poetry]
 name = 'growlery'
-version = '0.2.1'
+version = '0.2.2'
 description = "An OSRS Discord bot for Clan Quest."
 
 authors = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
@@ -44,15 +44,30 @@ documentation = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/tree/m
 
 keywords = [
     'python3',
+    'discord',
+    'runescape',
+    'osrs',
+    'oldschool',
 ]
 classifiers = [
     'Development Status :: 4 - Beta',
+    'Environment :: Console',
+    'Intended Audience :: End Users/Desktop',
+    'Intended Audience :: Information Technology',
+    'Intended Audience :: System Administrators',
     'License :: OSI Approved :: MIT License',
-    'Operating System :: OS Independent',
+    'Natural Language :: English',
+    'Operating System :: MacOS',
+    'Operating System :: Microsoft :: Windows :: Windows 10',
+    'Operating System :: Microsoft :: Windows :: Windows 11',
+    'Operating System :: POSIX :: Linux',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: Implementation :: CPython',
     'Programming Language :: Python :: Implementation :: PyPy',
+    'Topic :: Communications :: Chat',
+    'Topic :: Games/Entertainment',
+    'Topic :: Utilities',
     'Typing :: Typed',
 ]
 
@@ -60,17 +75,17 @@ classifiers = [
 [tool.poetry.dependencies]
 python = '^3.10'
 aiohttp = '^3.8.4'
-"discord.py" = '^2.2.0'
+"discord.py" = '^2.2.2'
 python-dotenv = '^1.0.0'
 
 [tool.poetry.dev-dependencies]
 coverage = {version = '^7.2.1', extras = ['toml',]}
-dpytest = '^0.6.2'
+dpytest = '^0.6.3'
 flake8 = '^6.0.0'
 flake8-pyproject = '^1.2.2'
-mypy = '^1.0.1'
-pylint = '^2.16.2'
-pytest = '^7.2.1'
+mypy = '^1.1.1'
+pylint = '^2.17.0'
+pytest = '^7.2.2'
 pytest-asyncio = '^0.20.3'
 pytest-cov = '^4.0.0'
 tox = '^4.4.6'
@@ -102,6 +117,9 @@ addopts = """
 testpaths = [
     'tests',
 ]
+filterwarnings = [
+    "ignore::DeprecationWarning:discord*:"
+]
 
 
 [tool.tox]
@@ -131,7 +149,6 @@ deps =
     pytest
     pytest-cov
     pytest-asyncio
-    wheel
 commands =
     coverage run -m pytest
 """

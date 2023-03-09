@@ -50,25 +50,39 @@ Lorem Ipsum dolor sit amet.
 <!--
 _______________________________________________________________________________
 
-## [0.2.1] - 2023-03-01
+## [0.2.2] - 2023-03-09
 
-Small fixes to `README.md` and project matadata.
+Added better instructions to `README.md`, and enhanced tests.
 
 ### Added
 
-- `py.typed`-file to announce the package uses type hints
+- Tests for HTTP requests
 
 ### Changed
 
+- Updated `README.md` with clearer instructions for using the bot
+- Updated dependencies
+- Improved test coverage
 - Updated localisation files
 
-### Fixed
-
-- PyPI badges in `README.md` now work correctly, and some broken badges were
-  removed
-- Corrected the list of supported Python versions
-
 -->
+
+_______________________________________________________________________________
+
+## [0.2.2] - 2023-03-09
+
+Added better instructions to `README.md`, and enhanced tests.
+
+### Added
+
+- Tests for HTTP requests
+
+### Changed
+
+- Updated `README.md` with clearer instructions for using the bot
+- Updated dependencies
+- Improved test coverage
+- Updated localisation files
 
 _______________________________________________________________________________
 

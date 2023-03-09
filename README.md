@@ -16,7 +16,7 @@ The Council of Elders looked about them and saw regression, not progress. The de
 
 ## Installation
 
-The project is currently only available as source code, but full releases should eventually be available via PyPI
+The project is currently as source code, via PyPI
 
 ```sh
 pip install growlery
@@ -34,11 +34,60 @@ python -m growlery
 
 in case the functionality has been implemented.
 
+## Usage
+
+The bot expects a Discord authentication token to be given via an environmental variable called `DISCORD_TOKEN`. It can alternatively be provided by writing it to a file called `.env` and placing that inside the `growlery` folder. An example file could look like this:
+
+```txt
+DISCORD_TOKEN=MzA5NzY3Njg0NzcwMTg1NzIy.V89mA1.9R8aoZ4vwhCUbIEd20BtzkVquLG
+```
+
+Note that the example token is just a dummy.
+
+If you need to generate a token, go to the [Discord developers page][Discord Developers] and create a new bot. [This tutorial][Discord bot tutorial] may prove useful.
+
+The only required permissions are:
+
+- Read Messages/View Channels
+- Send Messages
+- Use Slash Commands
+
+But for future-proofing, the following are recommended:
+
+- Manage Messages
+- Manage Threads
+- Embed Links
+- Attach Files
+- Read Message History
+- Add Reactions
+
 ## Features
 
 - Minimal dependencies
 - Supports fetching and printing hiscores, minigame scores, and boss kills as formatted text tables on Discord
 - Graceful handling of invalid usernames
+- List of supported commands:
+  - `/07hs <username>`
+    - Prints a table with the given user's stat hiscores, if available
+  - `/07hs-minigames <username>`
+    - Prints a table with the given user's minigame hiscores, if available
+  - `/07hs-bosses <username>`
+    - Prints a table with the given user's boss kills, if available
+  - The hiscores commands support additional postfixes for different kinds of rankings. Aside from the default, you can fetch the ranks for:
+    - Ironmen (eg. `/07hs-im <username>`)
+    - Hardcore Ironmen (eg. `/07hs-hcim <username>`)
+    - Ultimate Ironmen (eg. `/07hs-uim <username>`)
+    - Skillers (eg. `/07hs-skiller <username>`)
+    - 1-defence pures (eg. `/07hs-def <username>`)
+
+## Planned features
+
+- [x] Fetching skill hiscores
+- [x] Fetching minigame hiscores
+- [x] Fetching boss hiscores
+- [ ] Player comparisons
+- [ ] Storing usernames for Discord IDs
+- [ ] Support for the new Slash Commands
 
 ## Caught a Bug?
 
@@ -48,6 +97,8 @@ in case the functionality has been implemented.
 
 As always, you can run the tests using: `poetry run pytest`
 
+[Discord Developers]: https://discord.com/developers
+[Discord bot tutorial]: https://www.freecodecamp.org/news/create-a-discord-bot-with-python/
 [Forking a repository]: https://help.github.com/articles/fork-a-repo/
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository/
 

@@ -26,8 +26,7 @@ SQLALCHEMY_TEST_DATABASE_URL = 'sqlite+aiosqlite:///./tests/test.db'
 COMMAND_PREFIX = '/'
 AUTH_TOKEN: str = os.getenv('DISCORD_TOKEN', 'NONEXISTENT')
 
-if not LOG_FILES.exists():
-    LOG_FILES.parent.mkdir(parents=True, exist_ok=True)
+LOG_FILES.parent.mkdir(parents=True, exist_ok=True)
 
 
 SKILL_NAMES = (

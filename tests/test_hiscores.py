@@ -55,6 +55,12 @@ async def test_no_name_given(bot):  # pylint: disable=W0613
     await dpytest.message(f"{COMMAND_PREFIX}07hs")
     assert dpytest.verify().message().content("Username assigning to Discord profile not implemented yet.")
 
+    await dpytest.message(f"{COMMAND_PREFIX}07hs-minigames")
+    assert dpytest.verify().message().content("Username assigning to Discord profile not implemented yet.")
+
+    await dpytest.message(f"{COMMAND_PREFIX}07hs-bosses")
+    assert dpytest.verify().message().content("Username assigning to Discord profile not implemented yet.")
+
 
 @pytest.mark.asyncio
 async def test_normal_success(bot):  # pylint: disable=W0613
