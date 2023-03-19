@@ -37,6 +37,7 @@ TEST_USERS_REGULAR = (
     'LazyKernel',
     'Santa Ends',
     'Sk8r Dan Man',
+    'bendzo'  # High EHB and boss kill count
 )
 TEST_USERS = (
     TEST_USERS_REGULAR

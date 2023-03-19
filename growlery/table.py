@@ -1,17 +1,13 @@
 """Contains code for creating tables out of arbitrary data"""
 
-from growlery.config import (
-    AccountType,
-    AccountTypeName,
-    SKILL_NAMES,
-    MINIGAME_NAMES,
-    BOSS_NAMES,
-)
+from typing import Any
+
+from growlery.config import (AccountType, AccountTypeName, BOSS_NAMES, MINIGAME_NAMES, SKILL_NAMES)
 
 
 class Table:
     """Used to generate ASCII tables"""
-
+    
     def __init__(self,  # pylint: disable=R0913
                  header_text: str,
                  table_data: list[list[str]],
@@ -74,18 +70,21 @@ class Table:
         )
         column_row = f'╟─{column_row_content}─╢'
         header_rows = [
-            f"╔{'═' * (table_width-2)}╗",
-            f"║{self.header_text:^{table_width-2}}║",
-            f"╠{'═' * (table_width-2)}╣",
+            f"╔{'═' * (table_width - 2)}╗",
+            f"║{self.header_text:^{table_width - 2}}║",
+            f"╠{'═' * (table_width - 2)}╣",
             f"║ {self.columns_row_content()} ║",
             column_row,
         ]
         return header_rows
-
-    def generate_body(self) -> list[str]:
+    
+    def generate_body(self) -> tuple[list[str], list[str], list[str]] | tuple[Any, Any]:
         """Generates the table body"""
-
+        # There is a current max boss limit of 51, so rows per page can be set to 17.
+        max_row_per_page = 17
         body = []
+        second_row = []
+        third_row = []
         for row_name, *data in self.data_rows:
             contents = ' │ '.join(
                 f'{int(data_point):>{self.longest_cells_per_col[col_name]}{colon}}'
@@ -95,7 +94,17 @@ class Table:
             body.append(
                 f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║'
             )
-        return body
+            if len(body) > max_row_per_page:
+                second_row.append(
+                    f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║'
+                )
+                body.pop()
+                if len(second_row) > max_row_per_page:
+                    third_row.append(
+                        f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║'
+                    )
+                    second_row.pop()
+        return body, second_row, third_row
 
     def generate_footer(self) -> str:
         """Generates the footer of the table"""
@@ -108,15 +117,45 @@ class Table:
 
     def render_table(self):
         """Returns the full table with formatting"""
-
+        # Checks if there is another page of data
+        # In this case the second element in the tuple, which would be the second list of rows or page.
+        # If there is another page present, this code creates a table_rows with the first page.
+        if self.generate_body()[2]:
+            table_rows = [
+                *self.generate_header(),
+                *self.generate_body()[0],
+                self.generate_footer()
+            ]
+            second_row = [
+                *self.generate_header(),
+                *self.generate_body()[1],
+                self.generate_footer()
+            ]
+            third_row = [
+                *self.generate_header(),
+                *self.generate_body()[2],
+                self.generate_footer()
+            ]
+            return '```\n' + '\n'.join(table_rows) + '\n```', '```\n' + '\n'.join(
+                second_row) + '\n```', '```\n' + '\n'.join(third_row) + '\n```'
+        if self.generate_body()[1]:
+            table_rows = [
+                *self.generate_header(),
+                *self.generate_body()[0],
+                self.generate_footer()
+            ]
+            second_row = [
+                *self.generate_header(),
+                *self.generate_body()[1],
+                self.generate_footer()
+            ]
+            return '```\n' + '\n'.join(table_rows) + '\n```', '```\n' + '\n'.join(second_row) + '\n```'
         table_rows = [
             *self.generate_header(),
-            *self.generate_body(),
+            *self.generate_body()[0],
             self.generate_footer()
         ]
-        return '```text\n'+'\n'.join(table_rows)+'\n```'
-
-
+        return '```\n' + '\n'.join(table_rows) + '\n```'
 class SkillsTable(Table):
     """Used to create ASCII tables for skill hiscores"""
 

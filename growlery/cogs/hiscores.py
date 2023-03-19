@@ -4,6 +4,7 @@ import logging
 from http import HTTPStatus
 
 from discord.ext import commands
+from reactionmenu import ViewButton, ViewMenu
 
 from growlery.config import (
     AccountType,
@@ -11,7 +12,7 @@ from growlery.config import (
     RUNESCAPE_HISCORES_LITE_URL,
 )
 from growlery.http_request import fetch_page_content
-from growlery.table import SkillsTable, MinigamesTable, BossesTable
+from growlery.table import BossesTable, MinigamesTable, SkillsTable
 
 logger = logging.getLogger(__name__)
 
@@ -183,9 +184,20 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
 
         hiscores = await cls._fetch_hiscores(username, account_type)
         if hiscores:
+            menu = ViewMenu(ctx, menu_type=ViewMenu.TypeText)
             result = BossesTable(username, account_type, account_type_name, hiscores).render_table()
-
-        await ctx.send(result)
+            if isinstance(result, str):
+                menu.add_page(content=result)
+            else:
+                for page in result:
+                    menu.add_page(content=page)
+            menu.add_button(ViewButton.go_to_first_page())
+            menu.add_button(ViewButton.back())
+            menu.add_button(ViewButton.next())
+            menu.add_button(ViewButton.go_to_last_page())
+            await menu.start()
+        else:
+            await ctx.send(result)
 
     @staticmethod
     async def _fetch_hiscores(username: str, account_type: AccountType) -> list[list[str]] | None:
