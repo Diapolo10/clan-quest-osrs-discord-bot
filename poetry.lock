@@ -380,14 +380,14 @@ graph = ["objgraph (>=1.7.2)"]
 
 [[package]]
 name = "discord-py"
-version = "2.2.2"
+version = "2.2.3"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "discord.py-2.2.2-py3-none-any.whl", hash = "sha256:38fc52a784727b8e5e5749267089400035b187a009028eddfabeb182abcc6d52"},
-    {file = "discord.py-2.2.2.tar.gz", hash = "sha256:b9944056bcb5711b2d04088848fd004466cf117c15c84fa798bf55470f28275f"},
+    {file = "discord.py-2.2.3-py3-none-any.whl", hash = "sha256:792bdcfe71cfe013c446cf379b2e83e08b5050604322ad6fb592864e63511abd"},
+    {file = "discord.py-2.2.3.tar.gz", hash = "sha256:f9df95795c6f52c5db43b7ab43634993e12ef233288636a759166dd9c134d077"},
 ]
 
 [package.dependencies]
@@ -413,25 +413,19 @@ files = [
 
 [[package]]
 name = "dpytest"
-version = "0.6.5"
+version = "0.6.4"
 description = "A package that assists in writing tests for discord.py"
 category = "dev"
 optional = false
-python-versions = ">=3.8"
+python-versions = "*"
 files = [
-    {file = "dpytest-0.6.5-py3-none-any.whl", hash = "sha256:527b58737ac265322f2abd18891cc64b713976e4220cf75b4aadee28b5a0981e"},
-    {file = "dpytest-0.6.5.tar.gz", hash = "sha256:1cdbe3d6ecac191dffe63e417045bb9b9f27197aeb4da915ed3b912e5f125c25"},
+    {file = "dpytest-0.6.4-py3-none-any.whl", hash = "sha256:393825797275f4629ff1ac8ed9759563aa876962753b1310c71df4e0e1e6da41"},
+    {file = "dpytest-0.6.4.tar.gz", hash = "sha256:be2a7e6b2784e5c7a673f5c1340fc8bd2ad1fdadfe9b144a06438bbc260c08c1"},
 ]
 
 [package.dependencies]
-"discord.py" = "2.2.2"
-pytest = "*"
+"discord.py" = "*"
 pytest-asyncio = "*"
-
-[package.extras]
-dev = ["build", "flake8", "invoke"]
-doc = ["sphinx"]
-test = ["pytest", "pytest-asyncio"]
 
 [[package]]
 name = "exceptiongroup"
