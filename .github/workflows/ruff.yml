@@ -32,7 +32,7 @@ jobs:
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
-      if: ${{ !env.RUFF_SUCCESS }}
+      if: ${{ !env.RUFF_SUCCESS }} && startsWith(github.ref, 'refs/heads/')
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         title: "Format Python code with Ruff push"
