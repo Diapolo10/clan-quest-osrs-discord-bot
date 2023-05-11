@@ -1,6 +1,6 @@
 """Contains code for creating tables out of arbitrary data"""
 
-from typing import Any
+from __future__ import annotations
 
 from growlery.config import BOSS_NAMES, MINIGAME_NAMES, SKILL_NAMES, AccountType, AccountTypeName
 
@@ -8,7 +8,7 @@ from growlery.config import BOSS_NAMES, MINIGAME_NAMES, SKILL_NAMES, AccountType
 class Table:
     """Used to generate ASCII tables"""
 
-    def __init__(self,  # pylint: disable=R0913
+    def __init__(self: Table,  # pylint: disable=R0913
                  header_text: str,
                  table_data: list[list[str]],
                  row_names: tuple[str, ...],
@@ -28,14 +28,14 @@ class Table:
         self.data_rows: list[list[str]] = []
         self.preprocess_data()
 
-    def preprocess_data(self):
+    def preprocess_data(self: Table) -> None:
         """The data needs to be formatted to better suit our purposes"""
 
-        for row_name, row_data in zip(self.row_names, self.table_data):
+        for row_name, row_data in zip(self.row_names, self.table_data, strict=False):
 
             if len(row_name) > self.longest_cells_per_col[self.col_names[0]]:
                 self.longest_cells_per_col[self.col_names[0]] = len(row_name)
-            for col_name, col_value in zip(self.col_names[1:], row_data):
+            for col_name, col_value in zip(self.col_names[1:], row_data, strict=False):
                 if len(col_value) > self.longest_cells_per_col[col_name]:
                     self.longest_cells_per_col[col_name] = len(col_value)
 
@@ -46,7 +46,7 @@ class Table:
             comma_count = max((self.longest_cells_per_col[col] - 1) // 3, 0)
             self.longest_cells_per_col[col] += comma_count
 
-    def columns_row_content(self) -> str:
+    def columns_row_content(self: Table) -> str:
         """Formats the column header row"""
 
         return ' | '.join(
@@ -55,12 +55,12 @@ class Table:
         )
 
     @property
-    def column_lengths(self) -> list[int]:
+    def column_lengths(self: Table) -> list[int]:
         """Returns the lengths of the longest cells in each column"""
 
         return list(self.longest_cells_per_col.values())
 
-    def generate_header(self) -> list[str]:
+    def generate_header(self: Table) -> list[str]:
         """Generates the table header rows"""
 
         table_width = len(self.columns_row_content()) + 4
@@ -69,16 +69,16 @@ class Table:
             for column_length in self.column_lengths
         )
         column_row = f'╟─{column_row_content}─╢'
-        header_rows = [
+
+        return [
             f"╔{'═' * (table_width - 2)}╗",
             f"║{self.header_text:^{table_width - 2}}║",
             f"╠{'═' * (table_width - 2)}╣",
             f"║ {self.columns_row_content()} ║",
             column_row,
         ]
-        return header_rows
 
-    def generate_body(self) -> tuple[list[str], list[str], list[str]] | tuple[Any, Any]:
+    def generate_body(self: Table) -> tuple[list[str], list[str], list[str]]:
         """Generates the table body"""
         # There is a current max boss limit of 51, so rows per page can be set to 17.
         max_row_per_page = 17
@@ -88,7 +88,7 @@ class Table:
         for row_name, *data in self.data_rows:
             contents = ' │ '.join(
                 f'{int(data_point):>{self.longest_cells_per_col[col_name]}{colon}}'
-                for col_name, data_point in zip(self.col_names[1:], data)
+                for col_name, data_point in zip(self.col_names[1:], data, strict=False)
                 if (colon := "," if col_name in self.cols_with_commas else "") is not None
             )
             body.append(
@@ -106,7 +106,7 @@ class Table:
                     second_row.pop()
         return body, second_row, third_row
 
-    def generate_footer(self) -> str:
+    def generate_footer(self: Table) -> str:
         """Generates the footer of the table"""
 
         content = '═╧═'.join(
@@ -115,51 +115,60 @@ class Table:
         )
         return f'╚═{content}═╝'
 
-    def render_table(self):
+    def render_table(self: Table) -> str | tuple[str, ...]:
         """Returns the full table with formatting"""
         # Checks if there is another page of data
         # In this case the second element in the tuple, which would be the second list of rows or page.
         # If there is another page present, this code creates a table_rows with the first page.
         if self.generate_body()[2]:
-            table_rows = [
+            table_rows = (
                 *self.generate_header(),
                 *self.generate_body()[0],
                 self.generate_footer(),
-            ]
-            second_row = [
+            )
+            second_row = (
                 *self.generate_header(),
                 *self.generate_body()[1],
                 self.generate_footer(),
-            ]
-            third_row = [
+            )
+            third_row = (
                 *self.generate_header(),
                 *self.generate_body()[2],
                 self.generate_footer(),
-            ]
-            return '```\n' + '\n'.join(table_rows) + '\n```', '```\n' + '\n'.join(
-                second_row) + '\n```', '```\n' + '\n'.join(third_row) + '\n```'
+            )
+            return (
+                f"```\n{chr(10).join(table_rows)}\n```",
+                f"```\n{chr(10).join(second_row)}\n```",
+                f"```\n{chr(10).join(third_row)}\n```",
+            )
+
         if self.generate_body()[1]:
-            table_rows = [
+            table_rows = (
                 *self.generate_header(),
                 *self.generate_body()[0],
                 self.generate_footer(),
-            ]
-            second_row = [
+            )
+            second_row = (
                 *self.generate_header(),
                 *self.generate_body()[1],
                 self.generate_footer(),
-            ]
-            return '```\n' + '\n'.join(table_rows) + '\n```', '```\n' + '\n'.join(second_row) + '\n```'
-        table_rows = [
+            )
+            return (
+                f"```\n{chr(10).join(table_rows)}\n```",
+                f"```\n{chr(10).join(second_row)}\n```",
+            )
+        table_rows = (
             *self.generate_header(),
             *self.generate_body()[0],
             self.generate_footer(),
-        ]
-        return '```\n' + '\n'.join(table_rows) + '\n```'
+        )
+        return f"```\n{chr(10).join(table_rows)}\n```"
+
+
 class SkillsTable(Table):
     """Used to create ASCII tables for skill hiscores"""
 
-    def __init__(self,
+    def __init__(self: SkillsTable,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
@@ -184,7 +193,7 @@ class SkillsTable(Table):
 class MinigamesTable(Table):
     """Used to create ASCII tables for minigame hiscores"""
 
-    def __init__(self,
+    def __init__(self: MinigamesTable,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
@@ -210,7 +219,7 @@ class MinigamesTable(Table):
 class BossesTable(Table):
     """Used to create ASCII tables for boss hiscores"""
 
-    def __init__(self,
+    def __init__(self: BossesTable,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,

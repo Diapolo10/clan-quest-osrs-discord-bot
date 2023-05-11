@@ -21,7 +21,7 @@ async def bot():
 
     _bot = commands.Bot(command_prefix=COMMAND_PREFIX, intents=intents)
 
-    await _bot._async_setup_hook()  # pylint: disable=W0212
+    await _bot._async_setup_hook()  # noqa: SLF001
 
     for cog in cog_list:
         await _bot.add_cog(cog(_bot))

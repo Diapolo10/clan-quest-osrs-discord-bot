@@ -99,13 +99,6 @@ tox-gh-actions = '^3.1.0'
 "Changelog" = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/blob/main/CHANGELOG.md'
 
 
-[tool.pylint.'MESSAGES CONTROL']
-max-line-length = 120
-disable = [
-    # https://vald-phoenix.github.io/pylint-errors/
-]
-
-
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = """
@@ -180,7 +173,7 @@ max-complexity = 10
 [tool.ruff.per-file-ignores]
 # https://beta.ruff.rs/docs/rules/
 '__init__.py' = ['F401','F403','F405',]
-'tests/*' = ['ARG', 'PT011', 'S101', 'PLR2004',]
+'tests/*' = ['ANN', 'ARG', 'PT011', 'S101', 'PLR2004',]
 
 
 [tool.ruff.pylint]
