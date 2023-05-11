@@ -2,8 +2,7 @@
 
 import discord
 
-from growlery.main import MyBot, AUTH_TOKEN, COMMAND_PREFIX
-
+from growlery.main import AUTH_TOKEN, COMMAND_PREFIX, MyBot
 
 intents = discord.Intents.default()
 intents.message_content = True

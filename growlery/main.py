@@ -6,14 +6,13 @@ import logging.config
 import discord
 from discord.ext import commands
 
+from growlery.cogs import cog_list
 from growlery.config import (
     AUTH_TOKEN,
     COMMAND_PREFIX,
     LOG_CONFIG,
     LOG_FILES,
 )
-from growlery.cogs import cog_list
-
 
 logging.config.fileConfig(LOG_CONFIG, disable_existing_loggers=False, defaults={'logfilename': str(LOG_FILES)})
 logger = logging.getLogger(__name__)

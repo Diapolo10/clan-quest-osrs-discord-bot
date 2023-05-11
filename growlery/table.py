@@ -2,18 +2,18 @@
 
 from typing import Any
 
-from growlery.config import (AccountType, AccountTypeName, BOSS_NAMES, MINIGAME_NAMES, SKILL_NAMES)
+from growlery.config import BOSS_NAMES, MINIGAME_NAMES, SKILL_NAMES, AccountType, AccountTypeName
 
 
 class Table:
     """Used to generate ASCII tables"""
-    
+
     def __init__(self,  # pylint: disable=R0913
                  header_text: str,
                  table_data: list[list[str]],
                  row_names: tuple[str, ...],
                  col_names: tuple[str, ...],
-                 cols_with_commas: tuple[str, ...] = ()):
+                 cols_with_commas: tuple[str, ...] = ()) -> None:
         """Initialises a table"""
 
         self.header_text = header_text
@@ -77,7 +77,7 @@ class Table:
             column_row,
         ]
         return header_rows
-    
+
     def generate_body(self) -> tuple[list[str], list[str], list[str]] | tuple[Any, Any]:
         """Generates the table body"""
         # There is a current max boss limit of 51, so rows per page can be set to 17.
@@ -92,16 +92,16 @@ class Table:
                 if (colon := "," if col_name in self.cols_with_commas else "") is not None
             )
             body.append(
-                f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║'
+                f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║',
             )
             if len(body) > max_row_per_page:
                 second_row.append(
-                    f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║'
+                    f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║',
                 )
                 body.pop()
                 if len(second_row) > max_row_per_page:
                     third_row.append(
-                        f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║'
+                        f'║ {row_name:<{self.longest_cells_per_col[self.col_names[0]]}} │ {contents} ║',
                     )
                     second_row.pop()
         return body, second_row, third_row
@@ -124,17 +124,17 @@ class Table:
             table_rows = [
                 *self.generate_header(),
                 *self.generate_body()[0],
-                self.generate_footer()
+                self.generate_footer(),
             ]
             second_row = [
                 *self.generate_header(),
                 *self.generate_body()[1],
-                self.generate_footer()
+                self.generate_footer(),
             ]
             third_row = [
                 *self.generate_header(),
                 *self.generate_body()[2],
-                self.generate_footer()
+                self.generate_footer(),
             ]
             return '```\n' + '\n'.join(table_rows) + '\n```', '```\n' + '\n'.join(
                 second_row) + '\n```', '```\n' + '\n'.join(third_row) + '\n```'
@@ -142,18 +142,18 @@ class Table:
             table_rows = [
                 *self.generate_header(),
                 *self.generate_body()[0],
-                self.generate_footer()
+                self.generate_footer(),
             ]
             second_row = [
                 *self.generate_header(),
                 *self.generate_body()[1],
-                self.generate_footer()
+                self.generate_footer(),
             ]
             return '```\n' + '\n'.join(table_rows) + '\n```', '```\n' + '\n'.join(second_row) + '\n```'
         table_rows = [
             *self.generate_header(),
             *self.generate_body()[0],
-            self.generate_footer()
+            self.generate_footer(),
         ]
         return '```\n' + '\n'.join(table_rows) + '\n```'
 class SkillsTable(Table):
@@ -163,7 +163,7 @@ class SkillsTable(Table):
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
-                 table_data: list[list[str]]):
+                 table_data: list[list[str]]) -> None:
         """Handles converting the data for the parent class"""
 
         header_text = f"STATS FOR {username.replace('_', ' ').upper()}"
@@ -177,7 +177,7 @@ class SkillsTable(Table):
             table_data=table_data,
             row_names=SKILL_NAMES,
             col_names=column_names,
-            cols_with_commas=columns_with_commas
+            cols_with_commas=columns_with_commas,
         )
 
 
@@ -188,7 +188,7 @@ class MinigamesTable(Table):
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
-                 table_data: list[list[str]]):
+                 table_data: list[list[str]]) -> None:
         """Handles converting the data for the parent class"""
 
         sliced_data = table_data[len(SKILL_NAMES):]
@@ -203,7 +203,7 @@ class MinigamesTable(Table):
             table_data=sliced_data,
             row_names=MINIGAME_NAMES,
             col_names=column_names,
-            cols_with_commas=columns_with_commas
+            cols_with_commas=columns_with_commas,
         )
 
 
@@ -214,7 +214,7 @@ class BossesTable(Table):
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
-                 table_data: list[list[str]]):
+                 table_data: list[list[str]]) -> None:
         """Handles converting the data for the parent class"""
 
         sliced_data = table_data[len(SKILL_NAMES)+len(MINIGAME_NAMES):]
@@ -229,5 +229,5 @@ class BossesTable(Table):
             table_data=sliced_data,
             row_names=BOSS_NAMES,
             col_names=column_names,
-            cols_with_commas=columns_with_commas
+            cols_with_commas=columns_with_commas,
         )

@@ -2,7 +2,8 @@
 
 import discord
 import pytest_asyncio
-from discord.ext import commands, test as dpytest
+from discord.ext import commands
+from discord.ext import test as dpytest
 
 from growlery.cogs import cog_list
 from growlery.config import (

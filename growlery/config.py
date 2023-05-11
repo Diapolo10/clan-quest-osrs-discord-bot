@@ -6,7 +6,6 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-
 PROJECT_DIR = Path(__file__).parent
 ROOT_DIR = PROJECT_DIR.parent
 DOCS_DIR = ROOT_DIR / 'docs'
@@ -76,9 +75,11 @@ MINIGAME_NAMES = (
 BOSS_NAMES = (
     'Abyssal Sire',
     'Alchemical Hydra',
+    'Artio',
     'Barrows Chests',
     'Bryophyta',
     'Callisto',
+    'Calvar\'ion',
     'Cerberus',
     'Chambers of Xeric',
     'Chambers of Xeric: Challenge Mode',
@@ -109,6 +110,7 @@ BOSS_NAMES = (
     'Sarachnis',
     'Scorpia',
     'Skotizo',
+    'Spindel',
     'Tempoross',
     'The Gauntlet',
     'The Corrupted Gauntlet',

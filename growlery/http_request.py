@@ -29,8 +29,8 @@ async def fetch_page_content(url: str, status_message_override: dict[HTTPStatus,
                     logger.error(
                         status_message.get(
                             HTTPStatus(request.status),
-                            f"[{request.status}] - {request.reason or 'Unidentified problem'}"
-                        )
+                            f"[{request.status}] - {request.reason or 'Unidentified problem'}",
+                        ),
                     )
 
         except aiohttp.ClientConnectionError as err:

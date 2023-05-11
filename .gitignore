@@ -147,3 +147,6 @@ logs/
 
 # Auto-generated files
 TEMP_CHANGELOG.md
+
+# Ruff
+.ruff_cache

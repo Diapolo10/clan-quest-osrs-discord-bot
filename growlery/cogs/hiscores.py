@@ -7,9 +7,9 @@ from discord.ext import commands
 from reactionmenu import ViewButton, ViewMenu
 
 from growlery.config import (
+    RUNESCAPE_HISCORES_LITE_URL,
     AccountType,
     AccountTypeName,
-    RUNESCAPE_HISCORES_LITE_URL,
 )
 from growlery.http_request import fetch_page_content
 from growlery.table import BossesTable, MinigamesTable, SkillsTable
@@ -147,6 +147,7 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
             result = SkillsTable(username, account_type, account_type_name, hiscores).render_table()
 
         await ctx.send(result)
+        return None
 
     @classmethod
     async def reply_with_minigames(cls,
@@ -167,6 +168,7 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
             result = MinigamesTable(username, account_type, account_type_name, hiscores).render_table()
 
         await ctx.send(result)
+        return None
 
     @classmethod
     async def reply_with_bosses(cls,
@@ -196,8 +198,10 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
             menu.add_button(ViewButton.next())
             menu.add_button(ViewButton.go_to_last_page())
             await menu.start()
+            return None
         else:
             await ctx.send(result)
+            return None
 
     @staticmethod
     async def _fetch_hiscores(username: str, account_type: AccountType) -> list[list[str]] | None:
@@ -206,7 +210,7 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
         url: str = RUNESCAPE_HISCORES_LITE_URL.format(
             hiscores='_oldschool',
             gamemode=account_type,
-            player_name=username
+            player_name=username,
         )
         status_messages = {
             HTTPStatus.NOT_FOUND: "Could not find player hiscores",
