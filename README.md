@@ -106,7 +106,7 @@ But for future-proofing, the following are recommended:
 1. [Fork][Forking a repository] this repository to your own GitHub account and
    then [clone][Cloning a repository] it to your local device
 2. Install `poetry` (if it isn't already installed)
-3. Run `poetry install` in the project directory. This fetches development
+3. Run `poetry install --with dev,linters,tests` in the project directory. This fetches development
    dependencies like `pytest` and sets up everything for you to start debugging
 
 As always, you can run the tests using: `poetry run pytest`
