@@ -1,10 +1,14 @@
 # Growlery - The Clan Quest OSRS Discord Bot
 
-![Stuff](./docs/assets/cq_logo_wide.png)
+![CQ Logo](./docs/assets/cq_logo_wide.png)
 
-Ever since the untimely demise of RuneInfo, there's been a lack of OSRS support in the Discord bot department. While RuneScape 3 has Elenora, it doesn't support OSRS.
+Ever since the untimely demise of RuneInfo, there's been a lack of OSRS support
+in the Discord bot department. While RuneScape 3 has Elenora, it doesn't
+support OSRS.
 
-The Council of Elders looked about them and saw regression, not progress. The decision was made by the wisest: a new bot would be hardened and removed from the cycle. Its power would herald a new era.
+The Council of Elders looked about them and saw regression, not progress. The
+decision was made by the wisest: a new bot would be hardened and removed from
+the cycle. Its power would herald a new era.
 
 | Type         | Badges |
 |--------------|---|
@@ -16,7 +20,8 @@ The Council of Elders looked about them and saw regression, not progress. The de
 
 ## Installation
 
-The project is currently as source code, via PyPI
+The project is currently available both as a source release, and as a wheel,
+via PyPI
 
 ```sh
 pip install growlery
@@ -24,19 +29,25 @@ pip install growlery
 
 and as GitHub releases.
 
-Installation requires Python 3.10 or newer. Platform-independent.
+Installation requires Python 3.10 or newer. The project is platform-independent
+and should work fine on all major operating systems. Each release has been
+automatically tested to run on Windows, Ubuntu, and Mac OS.
 
-To run the bot, either manually execute `growlery/main.py` or, for future releases, you can attempt to run it via
+To run the bot, either manually execute `growlery/main.py` or, alternatively,
+you may run it as an executable package
 
 ```sh
 python -m growlery
 ```
 
-in case the functionality has been implemented.
+as long as the needed environmental variables have been set.
 
 ## Usage
 
-The bot expects a Discord authentication token to be given via an environmental variable called `DISCORD_TOKEN`. It can alternatively be provided by writing it to a file called `.env` and placing that inside the `growlery` folder. An example file could look like this:
+The bot expects a Discord authentication token to be given via an environmental
+variable called `DISCORD_TOKEN`. It can alternatively be provided by writing it
+to a file called `.env` and placing that inside the `growlery` folder. An
+example file could look like this:
 
 ```txt
 DISCORD_TOKEN=MzA5NzY3Njg0NzcwMTg1NzIy.V89mA1.9R8aoZ4vwhCUbIEd20BtzkVquLG
@@ -44,7 +55,8 @@ DISCORD_TOKEN=MzA5NzY3Njg0NzcwMTg1NzIy.V89mA1.9R8aoZ4vwhCUbIEd20BtzkVquLG
 
 Note that the example token is just a dummy.
 
-If you need to generate a token, go to the [Discord developers page][Discord Developers] and create a new bot. [This tutorial][Discord bot tutorial] may prove useful.
+If you need to generate a token, go to the [Discord developers page][Discord Developers]
+and create a new bot. [This tutorial][Discord bot tutorial] may prove useful.
 
 The only required permissions are:
 
@@ -91,9 +103,11 @@ But for future-proofing, the following are recommended:
 
 ## Caught a Bug?
 
-1. [Fork][Forking a repository] this repository to your own GitHub account and then [clone][Cloning a repository] it to your local device
+1. [Fork][Forking a repository] this repository to your own GitHub account and
+   then [clone][Cloning a repository] it to your local device
 2. Install `poetry` (if it isn't already installed)
-3. Run `poetry install` in the project directory. This fetches development dependencies like `pytest` and sets up everything for you to start debugging
+3. Run `poetry install` in the project directory. This fetches development
+   dependencies like `pytest` and sets up everything for you to start debugging
 
 As always, you can run the tests using: `poetry run pytest`
 

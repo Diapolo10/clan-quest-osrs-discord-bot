@@ -16,7 +16,7 @@ omit = [
 
 [tool.poetry]
 name = 'growlery'
-version = '0.2.2'
+version = '0.3.0'
 description = "An OSRS Discord bot for Clan Quest."
 
 authors = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]

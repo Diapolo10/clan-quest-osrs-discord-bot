@@ -50,22 +50,53 @@ Lorem Ipsum dolor sit amet.
 <!--
 _______________________________________________________________________________
 
-## [0.2.2] - 2023-03-09
+## [0.3.0] - 2023-05-11
 
-Added better instructions to `README.md`, and enhanced tests.
+`README.md` is now more up-to-date, the new Wilderness bosses are now in the
+list of bosses, and the project's linters were replaced with Ruff. The codebase
+has also been cleaned up somewhat as a result in order to pass the new linter
+guidelines.
 
 ### Added
 
-- Tests for HTTP requests
+- Added support for listing the new Wilderness bosses, fixing incorrect scores
+  for existing bosses.
 
 ### Changed
 
 - Updated `README.md` with clearer instructions for using the bot
 - Updated dependencies
-- Improved test coverage
 - Updated localisation files
 
+### Fixed
+
+- Boss hiscores are no longer broken
+
 -->
+
+_______________________________________________________________________________
+
+## [0.3.0] - 2023-05-11
+
+`README.md` is now more up-to-date, the new Wilderness bosses are now in the
+list of bosses, and the project's linters were replaced with Ruff. The codebase
+has also been cleaned up somewhat as a result in order to pass the new linter
+guidelines.
+
+### Added
+
+- Added support for listing the new Wilderness bosses, fixing incorrect scores
+  for existing bosses.
+
+### Changed
+
+- Updated `README.md` with clearer instructions for using the bot
+- Updated dependencies
+- Updated localisation files
+
+### Fixed
+
+- Boss hiscores are no longer broken
 
 _______________________________________________________________________________
 
