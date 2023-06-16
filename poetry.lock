@@ -376,18 +376,24 @@ files = [
 
 [[package]]
 name = "dpytest"
-version = "0.6.4"
+version = "0.6.8"
 description = "A package that assists in writing tests for discord.py"
 optional = false
-python-versions = "*"
+python-versions = ">=3.8"
 files = [
-    {file = "dpytest-0.6.4-py3-none-any.whl", hash = "sha256:393825797275f4629ff1ac8ed9759563aa876962753b1310c71df4e0e1e6da41"},
-    {file = "dpytest-0.6.4.tar.gz", hash = "sha256:be2a7e6b2784e5c7a673f5c1340fc8bd2ad1fdadfe9b144a06438bbc260c08c1"},
+    {file = "dpytest-0.6.8-py3-none-any.whl", hash = "sha256:262aa17b4244c1bab2d9fb7dafa1ebfedf3e543d85defb1d03aed46b9a6c9f61"},
+    {file = "dpytest-0.6.8.tar.gz", hash = "sha256:e27514193259c53e4d32428600a64990978943fcb85f508c307f68930c44d188"},
 ]
 
 [package.dependencies]
-"discord.py" = "*"
+"discord.py" = ">=2.3,<3.0"
+pytest = "*"
 pytest-asyncio = "*"
+
+[package.extras]
+dev = ["build", "flake8", "invoke"]
+doc = ["sphinx"]
+test = ["pytest", "pytest-asyncio"]
 
 [[package]]
 name = "exceptiongroup"
