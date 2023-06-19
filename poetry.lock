@@ -376,13 +376,13 @@ files = [
 
 [[package]]
 name = "dpytest"
-version = "0.6.8"
+version = "0.7.0"
 description = "A package that assists in writing tests for discord.py"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "dpytest-0.6.8-py3-none-any.whl", hash = "sha256:262aa17b4244c1bab2d9fb7dafa1ebfedf3e543d85defb1d03aed46b9a6c9f61"},
-    {file = "dpytest-0.6.8.tar.gz", hash = "sha256:e27514193259c53e4d32428600a64990978943fcb85f508c307f68930c44d188"},
+    {file = "dpytest-0.7.0-py3-none-any.whl", hash = "sha256:b9febeb860e6bc05bac3d433882becdba1b965ff4db1667e2d629acbc868b0d2"},
+    {file = "dpytest-0.7.0.tar.gz", hash = "sha256:9f16d58347591756a8d662a44c2307864698c8a5656408a584d0bb5d69c83bbb"},
 ]
 
 [package.dependencies]
@@ -1017,4 +1017,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "dd5af9e3d83a6b4a1ddd10777d02a503bcfdeffe3979bbccec69262a8c137403"
+content-hash = "4e0cdbfe712c7916c06fb27ba1c793ffdad382b5c74f19a1ee117e58f1eead02"
