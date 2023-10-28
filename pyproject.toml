@@ -1,75 +1,79 @@
 [build-system]
-requires = ['poetry-core>=1.0.0', 'wheel',]
-build-backend = 'poetry.core.masonry.api'
+requires = ["poetry-core>=1.0.0", "wheel",]
+build-backend = "poetry.core.masonry.api"
 
 
 [tool.coverage.run]
 branch = true
 relative_files = true
 omit = [
-    '.tox/*',
-    'tests/*',
-    'main.py',
-    '__main__.py',
+    ".tox/*",
+    "tests/*",
+    "main.py",
+    "__main__.py",
 ]
 
 
 [tool.poetry]
-name = 'growlery'
-version = '0.3.0'
+name = "growlery"
+version = "0.3.0"
 description = "An OSRS Discord bot for Clan Quest."
+
+packages = [
+    { include = "growlery", from = "src" },
+]
 
 authors = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
 maintainers = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
 
-include = ['CHANGELOG.md', 'LICENSE',]
-license = 'MIT'
-readme = 'README.md'
+include = ["CHANGELOG.md", "LICENSE",]
+license = "MIT"
+readme = "README.md"
 
-homepage = 'https://pypi.org/project/clan-quest-osrs-discord-bot/'
-repository = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot'
-documentation = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/tree/main/docs'
+homepage = "https://pypi.org/project/clan-quest-osrs-discord-bot/"
+repository = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot"
+documentation = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/tree/main/docs"
 
 keywords = [
-    'python3',
-    'discord',
-    'runescape',
-    'osrs',
-    'oldschool',
+    "python3",
+    "discord",
+    "runescape",
+    "osrs",
+    "oldschool",
 ]
 classifiers = [
-    'Development Status :: 4 - Beta',
-    'Environment :: Console',
-    'Intended Audience :: End Users/Desktop',
-    'Intended Audience :: Information Technology',
-    'Intended Audience :: System Administrators',
-    'License :: OSI Approved :: MIT License',
-    'Natural Language :: English',
-    'Operating System :: MacOS',
-    'Operating System :: Microsoft :: Windows :: Windows 10',
-    'Operating System :: Microsoft :: Windows :: Windows 11',
-    'Operating System :: POSIX :: Linux',
-    'Programming Language :: Python :: 3.10',
-    'Programming Language :: Python :: 3.11',
-    'Programming Language :: Python :: Implementation :: CPython',
-    'Programming Language :: Python :: Implementation :: PyPy',
-    'Topic :: Communications :: Chat',
-    'Topic :: Games/Entertainment',
-    'Topic :: Utilities',
-    'Typing :: Typed',
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Communications :: Chat",
+    "Topic :: Games/Entertainment",
+    "Topic :: Utilities",
+    "Typing :: Typed",
 ]
 
 
 [tool.poetry.dependencies]
-python = '^3.10'
-aiohttp = '^3.8.4'
-"discord.py" = '^2.2.3'
-python-dotenv = '^1.0.0'
-reactionmenu = '^3.1.3'
+python = "^3.10"
+aiohttp = "^3.8.6"
+"discord.py" = "^2.3.2"
+python-dotenv = "^1.0.0"
+reactionmenu = "^3.1.3"
 
 
 [tool.poetry.group.dev.dependencies]
-mypy = '^1.3.0'
+mypy = "^1.6.1"
 
 
 [tool.poetry.group.linters]
@@ -77,7 +81,7 @@ optional = true
 
 
 [tool.poetry.group.linters.dependencies]
-ruff = '>=0.0.265,<0.1.4'
+ruff = "^0.1.3"
 
 
 [tool.poetry.group.tests]
@@ -85,18 +89,18 @@ optional = true
 
 
 [tool.poetry.group.tests.dependencies]
-coverage = {version = '^7.2.2', extras = ['toml',]}
-dpytest = '>=0.6.3,<0.8.0'
-pytest = '^7.2.2'
-pytest-asyncio = '^0.21.0'
-pytest-cov = '^4.0.0'
-tox = '^4.4.8'
-tox-gh-actions = '^3.1.0'
+coverage = {version = "^7.3.2", extras = ["toml",]}
+dpytest = "^0.7.0"
+pytest = "^7.2.2"
+pytest-asyncio = "^0.21.1"
+pytest-cov = "^4.1.0"
+tox = "^4.11.3"
+tox-gh-actions = "^3.1.3"
 
 
 [tool.poetry.urls]
-"Tracker" = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/issues'
-"Changelog" = 'https://github.com/Diapolo10/clan-quest-osrs-discord-bot/blob/main/CHANGELOG.md'
+"Tracker" = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/issues"
+"Changelog" = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/blob/main/CHANGELOG.md"
 
 
 [tool.pytest.ini_options]
@@ -110,7 +114,7 @@ addopts = """
 --ignore=docs/
 """
 testpaths = [
-    'tests',
+    "tests",
 ]
 filterwarnings = [
     "ignore::DeprecationWarning:discord*:"
@@ -119,61 +123,86 @@ filterwarnings = [
 
 [tool.ruff]
 select = [
-    'A',   # Builtins
-    'ANN', # Annotations
-    'ARG', # Unused arguments
-    'B',   # Bugbear
-    'BLE', # Blind except
-    'C4',  # Comprehensions
-    'C90', # mccabe
-    'COM', # Commas
-    'DTZ', # Datetimes
-    'ERA', # Commented-out code
-    'EXE', # Executable
-    'G',   # Logging format
-    'I',   # Isort
-    'ICN', # Import conventions
-    'INP', # Disallow PEP-420 (Implicit namespace packages)
-    'INT', # gettext
-    'ISC', # Implicit str concat
-    'N',   # PEP-8 Naming
-    'NPY', # Numpy
-    'PGH', # Pygrep hooks
-    'PIE', # Unnecessary code
-    'PL',  # Pylint
-    'PT',  # Pytest
-    'PTH', # Use Pathlib
-    'PYI', # Stub files
-    'RET', # Return
-    'RUF', # Ruff
-    'RSE', # Raise
-    'S',   # Bandit
-    'SIM', # Code simplification
-    'SLF', # Private member access
-    'T20', # Print
-    'TCH', # Type checking
-    'TID', # Tidy imports
-    'UP',  # Pyupgrade
-    'W',   # Warnings
-    'YTT', # sys.version
+    "A",    # Builtins
+    "ANN",  # Annotations
+    "ARG",  # Unused arguments
+    "B",    # Bugbear
+    "BLE",  # Blind except
+    "C4",   # Comprehensions
+    "C90",  # mccabe
+    "COM",  # Commas
+    "D1",   # Undocumented public elements
+    "D2",   # Docstring conventions
+    "D3",   # Triple double quotes
+    "D4",   # Docstring text format
+    "DTZ",  # Datetimes
+    "EM",   # Error messages
+    "ERA",  # Commented-out code
+    "EXE",  # Executable
+    "F",    # Pyflakes
+    "FA",   # __future__ annotations
+    "FLY",  # F-strings
+    # "FURB", # Refurb
+    "G",    # Logging format
+    "I",    # Isort
+    "ICN",  # Import conventions
+    "INP",  # Disallow PEP-420 (Implicit namespace packages)
+    "INT",  # gettext
+    "ISC",  # Implicit str concat
+    # "LOG",  # Logging
+    "N",    # PEP-8 Naming
+    "NPY",  # Numpy
+    "PERF", # Unnecessary performance costs
+    "PGH",  # Pygrep hooks
+    "PIE",  # Unnecessary code
+    "PL",   # Pylint
+    "PT",   # Pytest
+    "PTH",  # Use Pathlib
+    "PYI",  # Stub files
+    "Q",    # Quotes
+    "RET",  # Return
+    "RUF",  # Ruff
+    "RSE",  # Raise
+    "S",    # Bandit
+    "SIM",  # Code simplification
+    "SLF",  # Private member access
+    "SLOT", # __slots__
+    "T10",  # Debugger
+    "T20",  # Print
+    "TCH",  # Type checking
+    "TID",  # Tidy imports
+    "TRY",  # Exception handling
+    "UP",   # Pyupgrade
+    "W",    # Warnings
+    "YTT",  # sys.version
 ]
 ignore = [
-    'ANN401',   # Disallow typing.Any
-    'PLR0913',  # Too many arguments
+    "D203",    # One blank line before class docstring
+    "D212",    # Multi-line summary first line
+    "PLR0913", # Too many arguments
+    "Q000",    # Single quotes found but double quotes preferred
 ]
 ignore-init-module-imports = true
 line-length = 120
+# preview = true
+show-fixes = true
+src = ["src",]
+target-version = "py310"
+
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+multiline-quotes = "double"
 
 
 [tool.ruff.mccabe]
-# Unlike Flake8, default to a complexity level of 10.
 max-complexity = 10
 
 
 [tool.ruff.per-file-ignores]
 # https://beta.ruff.rs/docs/rules/
-'__init__.py' = ['F401','F403','F405',]
-'tests/*' = ['ANN', 'ARG', 'PT011', 'S101', 'PLR2004',]
+"__init__.py" = ["F401", "F403", "F405",]
+"tests/*" = ["ANN", "ARG", "INP001", "PT011", "S101", "PLR2004",]
 
 
 [tool.ruff.pylint]
@@ -190,8 +219,7 @@ ban-relative-imports = "all"
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py38, py39, py310, py311, pypy3
-isolated_build = True
+envlist = py310, py311, pypy3
 
 [gh-actions]
 python =
@@ -199,21 +227,11 @@ python =
     3.11: py311
     pypy-3.10: pypy3
 
-[gh-actions:env]
-PLATFORM =
-    ubuntu-latest: linux
-    macos-latest: macos
-    windows-latest: windows
-
 [testenv]
 passenv = GITHUB_*
-deps =
-    coverage
-    coveralls[toml]
-    dpytest
-    pytest
-    pytest-cov
-    pytest-asyncio
+allowlist_externals = poetry
+
 commands =
-    coverage run -m pytest
+    poetry run pytest
+    poetry run coverage report
 """
