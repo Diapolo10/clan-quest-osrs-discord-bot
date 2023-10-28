@@ -1,4 +1,4 @@
-"""Used to launch the bot as a module"""
+"""Used to launch the bot as a module."""
 
 import discord
 

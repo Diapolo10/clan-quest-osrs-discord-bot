@@ -1,4 +1,4 @@
-"""This file contains the global configuration settings for the Discord bot"""
+"""Global configuration settings for the Discord bot."""
 
 import os
 from enum import Enum
@@ -135,7 +135,7 @@ RUNESCAPE_HISCORES_LITE_URL = (
 
 
 class AccountType(str, Enum):
-    """Specifies different supported account types"""
+    """Specify different supported account types."""
 
     NORMAL = ''
     IRONMAN = '_ironman'
@@ -146,7 +146,7 @@ class AccountType(str, Enum):
 
 
 class AccountTypeName(str, Enum):
-    """Specifies names for different supported account types"""
+    """Specify names for different supported account types."""
 
     NORMAL = ''
     IRONMAN = 'Ironman'

@@ -1,4 +1,4 @@
-"""Code for sending and handling HTTP requests to external services"""
+"""Code for sending and handling HTTP requests to external services."""
 
 import logging
 from http import HTTPStatus
@@ -9,8 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 async def fetch_page_content(url: str, status_message_override: dict[HTTPStatus, str] | None = None) -> str:
-    """Handles fetching the content from a given web address"""
-
+    """Fetch the content from a given web address."""
     result = ''
     status_message = {
         HTTPStatus.NOT_FOUND: "Could not find resource.",
@@ -33,7 +32,7 @@ async def fetch_page_content(url: str, status_message_override: dict[HTTPStatus,
                         ),
                     )
 
-        except aiohttp.ClientConnectionError as err:
-            logger.error("Connection error: %s", err)
+        except aiohttp.ClientConnectionError:
+            logger.exception("Connection error")
 
     return result

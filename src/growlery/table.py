@@ -1,4 +1,4 @@
-"""Contains code for creating tables out of arbitrary data"""
+"""Create tables out of arbitrary data."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ from growlery.config import BOSS_NAMES, MINIGAME_NAMES, SKILL_NAMES, AccountType
 
 
 class Table:
-    """Used to generate ASCII tables"""
+    """Used to generate ASCII tables."""
 
     def __init__(self: Table,  # pylint: disable=R0913
                  header_text: str,
@@ -14,8 +14,7 @@ class Table:
                  row_names: tuple[str, ...],
                  col_names: tuple[str, ...],
                  cols_with_commas: tuple[str, ...] = ()) -> None:
-        """Initialises a table"""
-
+        """Initialise a table."""
         self.header_text = header_text
         self.table_data = table_data
         self.row_names = row_names
@@ -29,8 +28,7 @@ class Table:
         self.preprocess_data()
 
     def preprocess_data(self: Table) -> None:
-        """The data needs to be formatted to better suit our purposes"""
-
+        """Format the data to better suit our purposes."""
         for row_name, row_data in zip(self.row_names, self.table_data, strict=False):
 
             if len(row_name) > self.longest_cells_per_col[self.col_names[0]]:
@@ -47,8 +45,7 @@ class Table:
             self.longest_cells_per_col[col] += comma_count
 
     def columns_row_content(self: Table) -> str:
-        """Formats the column header row"""
-
+        """Format the column header row."""
         return ' | '.join(
             f'{col:^{length}}'
             for col, length in self.longest_cells_per_col.items()
@@ -56,13 +53,11 @@ class Table:
 
     @property
     def column_lengths(self: Table) -> list[int]:
-        """Returns the lengths of the longest cells in each column"""
-
+        """Return the lengths of the longest cells in each column."""
         return list(self.longest_cells_per_col.values())
 
     def generate_header(self: Table) -> list[str]:
-        """Generates the table header rows"""
-
+        """Generate the table header rows."""
         table_width = len(self.columns_row_content()) + 4
         column_row_content = '─┬─'.join(
             '─' * column_length
@@ -79,7 +74,7 @@ class Table:
         ]
 
     def generate_body(self: Table) -> tuple[list[str], list[str], list[str]]:
-        """Generates the table body"""
+        """Generate the table body."""
         # There is a current max boss limit of 51, so rows per page can be set to 17.
         max_row_per_page = 17
         body = []
@@ -107,8 +102,7 @@ class Table:
         return body, second_row, third_row
 
     def generate_footer(self: Table) -> str:
-        """Generates the footer of the table"""
-
+        """Generate the footer of the table."""
         content = '═╧═'.join(
             '═' * column_length
             for column_length in self.column_lengths
@@ -116,7 +110,7 @@ class Table:
         return f'╚═{content}═╝'
 
     def render_table(self: Table) -> str | tuple[str, ...]:
-        """Returns the full table with formatting"""
+        """Return the full table with formatting."""
         # Checks if there is another page of data
         # In this case the second element in the tuple, which would be the second list of rows or page.
         # If there is another page present, this code creates a table_rows with the first page.
@@ -166,15 +160,14 @@ class Table:
 
 
 class SkillsTable(Table):
-    """Used to create ASCII tables for skill hiscores"""
+    """Used to create ASCII tables for skill hiscores."""
 
     def __init__(self: SkillsTable,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
                  table_data: list[list[str]]) -> None:
-        """Handles converting the data for the parent class"""
-
+        """Handle converting the data for the parent class."""
         header_text = f"STATS FOR {username.replace('_', ' ').upper()}"
         if account_type != AccountType.NORMAL:
             header_text += f" [{account_type_name.upper()}]"
@@ -191,15 +184,14 @@ class SkillsTable(Table):
 
 
 class MinigamesTable(Table):
-    """Used to create ASCII tables for minigame hiscores"""
+    """Used to create ASCII tables for minigame hiscores."""
 
     def __init__(self: MinigamesTable,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
                  table_data: list[list[str]]) -> None:
-        """Handles converting the data for the parent class"""
-
+        """Handle converting the data for the parent class."""
         sliced_data = table_data[len(SKILL_NAMES):]
         header_text = f"MINIGAMES FOR {username.replace('_', ' ').upper()}"
         if account_type != AccountType.NORMAL:
@@ -217,15 +209,14 @@ class MinigamesTable(Table):
 
 
 class BossesTable(Table):
-    """Used to create ASCII tables for boss hiscores"""
+    """Used to create ASCII tables for boss hiscores."""
 
     def __init__(self: BossesTable,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
                  table_data: list[list[str]]) -> None:
-        """Handles converting the data for the parent class"""
-
+        """Handle converting the data for the parent class."""
         sliced_data = table_data[len(SKILL_NAMES)+len(MINIGAME_NAMES):]
         header_text = f"BOSS KILLS FOR {username.replace('_', ' ').upper()}"
         if account_type != AccountType.NORMAL:

@@ -1,4 +1,4 @@
-"""Implements the core of the bot"""
+"""Implement the core of the bot."""
 
 from __future__ import annotations
 
@@ -21,11 +21,10 @@ logger = logging.getLogger(__name__)
 
 
 class MyBot(commands.Bot):
-    """Logs events related to the bot"""
+    """Log events related to the bot."""
 
     async def on_ready(self: MyBot) -> None:
-        """Message indicating that the bot is online"""
-
+        """Message indicating that the bot is online."""
         logger.info("Installing cogs...")
 
         for cog in cog_list:
@@ -34,8 +33,7 @@ class MyBot(commands.Bot):
         logger.info("Logged in as %s", self.user)
 
     async def on_message(self: MyBot, message: discord.message.Message) -> None:  # pylint: disable=W0221
-        """New message detected"""
-
+        """Handle message."""
         if message.author == self.user:
             return
 

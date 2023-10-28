@@ -1,4 +1,4 @@
-"""Package for Discord cogs"""
+"""Package for Discord cogs."""
 
 from growlery.cogs.hiscores import Hiscores
 
