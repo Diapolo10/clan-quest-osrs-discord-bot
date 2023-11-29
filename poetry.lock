@@ -688,13 +688,13 @@ cli = ["click (>=5.0)"]
 
 [[package]]
 name = "reactionmenu"
-version = "3.1.4"
+version = "3.1.5"
 description = "A library to create a discord.py 2.0+ paginator. Supports pagination with buttons, reactions, and category selection using selects."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "reactionmenu-3.1.4-py3-none-any.whl", hash = "sha256:16fce4662919d77bc0085050a6c17e275f2f0e4aeeeab5e0c8347e4ace8dc2b6"},
-    {file = "reactionmenu-3.1.4.tar.gz", hash = "sha256:8f36aeaac049942c7257933eb00b105fe00bdf11adc3c34dc8e4688154b8f505"},
+    {file = "reactionmenu-3.1.5-py3-none-any.whl", hash = "sha256:61ccc06fa071de5c279d1a4817b3dbc51cd8a72cd0211826cf56ac5bb8af6e87"},
+    {file = "reactionmenu-3.1.5.tar.gz", hash = "sha256:2cbc48c8c9dc70e423dec8e094d055c2a58b4a11c8a6654474fc8773aa93d1fc"},
 ]
 
 [package.dependencies]
