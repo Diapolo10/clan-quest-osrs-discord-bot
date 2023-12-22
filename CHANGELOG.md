@@ -50,29 +50,47 @@ Lorem Ipsum dolor sit amet.
 <!--
 _______________________________________________________________________________
 
-## [0.3.0] - 2023-05-11
+## [0.3.1] - 2023-12-22
 
-`README.md` is now more up-to-date, the new Wilderness bosses are now in the
-list of bosses, and the project's linters were replaced with Ruff. The codebase
-has also been cleaned up somewhat as a result in order to pass the new linter
-guidelines.
-
-### Added
-
-- Added support for listing the new Wilderness bosses, fixing incorrect scores
-  for existing bosses.
+Fixed username insertion to URLs to get unit tests working again, fixed logging
+caused by moving everything to `src`, updated dependencies, and updated
+minigame/boss lists.
 
 ### Changed
 
-- Updated `README.md` with clearer instructions for using the bot
+- Updated the minigame and boss lists to show correct output
 - Updated dependencies
 - Updated localisation files
 
 ### Fixed
 
-- Boss hiscores are no longer broken
+- The bot no longer breaks when used with usernames containing spaces (mostly
+  affected unit tests)
+- Logging configuration is found again, previously moving the source code broke
+  this as the filepath wasn't updated, leading to errors
 
 -->
+
+_______________________________________________________________________________
+
+## [0.3.1] - 2023-12-22
+
+Fixed username insertion to URLs to get unit tests working again, fixed logging
+caused by moving everything to `src`, updated dependencies, and updated
+minigame/boss lists.
+
+### Changed
+
+- Updated the minigame and boss lists to show correct output
+- Updated dependencies
+- Updated localisation files
+
+### Fixed
+
+- The bot no longer breaks when used with usernames containing spaces (mostly
+  affected unit tests)
+- Logging configuration is found again, previously moving the source code broke
+  this as the filepath wasn't updated, leading to errors
 
 _______________________________________________________________________________
 

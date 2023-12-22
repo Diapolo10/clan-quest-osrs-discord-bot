@@ -76,7 +76,7 @@ class Table:
     def generate_body(self: Table) -> tuple[list[str], list[str], list[str]]:
         """Generate the table body."""
         # There is a current max boss limit of 51, so rows per page can be set to 17.
-        max_row_per_page = 17
+        max_row_per_page = 25  # NOTE: Refactor the whole mess and make this only apply to bosses
         body = []
         second_row = []
         third_row = []

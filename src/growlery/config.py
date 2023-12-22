@@ -7,7 +7,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 PROJECT_DIR = Path(__file__).parent
-ROOT_DIR = PROJECT_DIR.parent
+ROOT_DIR = PROJECT_DIR.parent.parent
 DOCS_DIR = ROOT_DIR / 'docs'
 CODE_EXAMPLES = DOCS_DIR / 'example_code'
 ENV_FILE = PROJECT_DIR / '.env'
@@ -57,8 +57,11 @@ SKILL_NAMES = (
 
 MINIGAME_NAMES = (
     'Unknown Minigame',
+    'Unknown Minigame',
     'Bounty Hunter - Hunter',
     'Bounty Hunter - Rogue',
+    'Bounty Hunter (Legacy) - Hunter',
+    'Bounty Hunter (Legacy) - Rogue',
     'Clue Scrolls (all)',
     'Clue Scrolls (beginner)',
     'Clue Scrolls (easy)',
@@ -92,6 +95,7 @@ BOSS_NAMES = (
     'Dagannoth Rex',
     'Dagannoth Supreme',
     'Deranged Archaeologist',
+    'Duke Sucellus',
     'General Graardor',
     'Giant Mole',
     'Grotesque Guardians',
@@ -114,6 +118,8 @@ BOSS_NAMES = (
     'Tempoross',
     'The Gauntlet',
     'The Corrupted Gauntlet',
+    'The Leviathan',
+    'The Whisperer',
     'Theatre of Blood',
     'Theatre of Blood: Hard Mode',
     'Thermonuclear Smoke Devil',
@@ -121,6 +127,7 @@ BOSS_NAMES = (
     'Tombs of Amascut: Expert Mode',
     'TzKal-Zuk',
     'TzTok-Jad',
+    'Vardorvis',
     'Venenatis',
     'Vet\'ion',
     'Vorkath',

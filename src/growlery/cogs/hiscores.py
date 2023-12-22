@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 from http import HTTPStatus
 from typing import TYPE_CHECKING
+from urllib.parse import quote
 
 from discord.ext import commands
 from reactionmenu import ViewButton, ViewMenu  # type: ignore[import]
@@ -130,7 +131,8 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
             return await ctx.send(result)
 
         hiscores = await cls._fetch_hiscores(username, account_type)
-        if hiscores:
+
+        if hiscores and not hiscores[0][0].startswith('<!DOCTYPE'):
             result = SkillsTable(username, account_type, account_type_name, hiscores).render_table()  # type: ignore[assignment]
 
         return await ctx.send(result)
@@ -149,7 +151,8 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
             return await ctx.send(result)
 
         hiscores = await cls._fetch_hiscores(username, account_type)
-        if hiscores:
+
+        if hiscores and not hiscores[0][0].startswith('<!DOCTYPE'):
             result = MinigamesTable(username, account_type, account_type_name, hiscores).render_table()  # type: ignore[assignment]
 
         return await ctx.send(result)
@@ -168,7 +171,7 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
             return await ctx.send(result)
 
         hiscores = await cls._fetch_hiscores(username, account_type)
-        if hiscores:
+        if hiscores and not hiscores[0][0].startswith('<!DOCTYPE'):
             menu = ViewMenu(ctx, menu_type=ViewMenu.TypeText)
             result = BossesTable(username, account_type, account_type_name, hiscores).render_table()  # type: ignore[assignment]
             if isinstance(result, str):
@@ -189,8 +192,8 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
         """Handle fetching the hiscores for RuneScape accounts."""
         url: str = RUNESCAPE_HISCORES_LITE_URL.format(
             hiscores='_oldschool',
-            gamemode=account_type,
-            player_name=username,
+            gamemode=account_type.value,
+            player_name=quote(username),
         )
         status_messages = {
             HTTPStatus.NOT_FOUND: "Could not find player hiscores",
