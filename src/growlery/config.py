@@ -73,6 +73,7 @@ MINIGAME_NAMES = (
     'PvP Arena - Rank',
     'Soul Wars Zeal',
     'Rifts closed',
+    'Colosseum Glory',
 )
 
 BOSS_NAMES = (
@@ -105,6 +106,7 @@ BOSS_NAMES = (
     'Kraken',
     'Kree\'Arra',
     'K\'ril Tsutsaroth',
+    'Lunar Chests',
     'Mimic',
     'Nex',
     'Nightmare',
@@ -113,7 +115,9 @@ BOSS_NAMES = (
     'Phantom Muspah',
     'Sarachnis',
     'Scorpia',
+    'Scurrius',
     'Skotizo',
+    'Sol Heredit',
     'Spindel',
     'Tempoross',
     'The Gauntlet',
