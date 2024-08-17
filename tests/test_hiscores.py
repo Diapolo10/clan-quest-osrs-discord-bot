@@ -45,7 +45,7 @@ TEST_USERS = (
 NONEXISTENT_USER = "Idonotexistandneverwill"
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_no_name_given(bot: Bot):
     """Test commands without name input."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs")
@@ -58,7 +58,7 @@ async def test_no_name_given(bot: Bot):
     assert dpytest.verify().message().content("Username assigning to Discord profile not implemented yet.")
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_normal_success(bot: Bot):
     """Test posting the stats of a regular account."""
     for user in TEST_USERS:
@@ -67,7 +67,7 @@ async def test_normal_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"STATS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_normal_failure(bot: Bot):
     """Test posting the stats of a nonexistent regular account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs {NONEXISTENT_USER}")
@@ -75,7 +75,7 @@ async def test_normal_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ironman_success(bot: Bot):
     """Test posting the stats of an ironman account."""
     for user in TEST_USERNAMES_IRONMAN:
@@ -84,7 +84,7 @@ async def test_ironman_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"STATS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ironman_failure(bot: Bot):
     """Test posting the stats of a nonexistent ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-im {NONEXISTENT_USER}")
@@ -92,7 +92,7 @@ async def test_ironman_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_hardcore_ironman_success(bot: Bot):
     """Test posting the stats of a hardcore ironman account."""
     for user in TEST_USERNAMES_HARDCORE:
@@ -101,7 +101,7 @@ async def test_hardcore_ironman_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"STATS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_hardcore_ironman_failure(bot: Bot):
     """Test posting the stats of a nonexistent hardcore ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-hcim {NONEXISTENT_USER}")
@@ -109,7 +109,7 @@ async def test_hardcore_ironman_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ultimate_ironman_success(bot: Bot):
     """Test posting the stats of an ultimate ironman account."""
     for user in TEST_USERNAMES_ULTIMATE:
@@ -118,7 +118,7 @@ async def test_ultimate_ironman_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"STATS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ultimate_ironman_failure(bot: Bot):
     """Test posting the stats of a nonexistent ultimate ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-uim {NONEXISTENT_USER}")
@@ -126,7 +126,7 @@ async def test_ultimate_ironman_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_skiller_success(bot: Bot):
     """Test posting the stats of a skiller account."""
     for user in TEST_USERNAMES_SKILLER:
@@ -135,7 +135,7 @@ async def test_skiller_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"STATS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_skiller_failure(bot: Bot):
     """Test posting the stats of a nonexistent skiller account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-skiller {NONEXISTENT_USER}")
@@ -143,7 +143,7 @@ async def test_skiller_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_1def_pure_success(bot: Bot):
     """Test posting the stats of a 1-Defence pure account."""
     for user in TEST_USERNAMES_1DEF_PURE:
@@ -152,7 +152,7 @@ async def test_1def_pure_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"STATS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_1def_pure_failure(bot: Bot):
     """Test posting the stats of a nonexistent 1-Defence pure account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-def {NONEXISTENT_USER}")
@@ -160,7 +160,7 @@ async def test_1def_pure_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_normal_minigames_success(bot: Bot):
     """Test posting the minigames of a regular account."""
     for user in TEST_USERS:
@@ -169,7 +169,7 @@ async def test_normal_minigames_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"MINIGAMES FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_normal_minigames_failure(bot: Bot):
     """Test posting the minigames of a nonexistent regular account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-minigames {NONEXISTENT_USER}")
@@ -177,7 +177,7 @@ async def test_normal_minigames_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ironman_minigames_success(bot: Bot):
     """Test posting the minigames of an ironman account."""
     for user in TEST_USERNAMES_IRONMAN:
@@ -186,7 +186,7 @@ async def test_ironman_minigames_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"MINIGAMES FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ironman_minigames_failure(bot: Bot):
     """Test posting the minigames of a nonexistent ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-im-minigames {NONEXISTENT_USER}")
@@ -194,7 +194,7 @@ async def test_ironman_minigames_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_hardcore_ironman_minigames_success(bot: Bot):
     """Test posting the minigames of a hardcore ironman account."""
     for user in TEST_USERNAMES_HARDCORE:
@@ -203,7 +203,7 @@ async def test_hardcore_ironman_minigames_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"MINIGAMES FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_hardcore_ironman_minigames_failure(bot: Bot):
     """Test posting the minigames of a nonexistent hardcore ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-hcim-minigames {NONEXISTENT_USER}")
@@ -211,7 +211,7 @@ async def test_hardcore_ironman_minigames_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ultimate_ironman_minigames_success(bot: Bot):
     """Test posting the minigames of an ultimate ironman account."""
     for user in TEST_USERNAMES_ULTIMATE:
@@ -220,7 +220,7 @@ async def test_ultimate_ironman_minigames_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"MINIGAMES FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ultimate_ironman_minigames_failure(bot: Bot):
     """Test posting the minigames of a nonexistent ultimate ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-uim-minigames {NONEXISTENT_USER}")
@@ -228,7 +228,7 @@ async def test_ultimate_ironman_minigames_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_skiller_minigames_success(bot: Bot):
     """Test posting the minigames of a skiller account."""
     for user in TEST_USERNAMES_SKILLER:
@@ -237,7 +237,7 @@ async def test_skiller_minigames_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"MINIGAMES FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_skiller_minigames_failure(bot: Bot):
     """Test posting the minigames of a nonexistent skiller account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-skiller-minigames {NONEXISTENT_USER}")
@@ -245,7 +245,7 @@ async def test_skiller_minigames_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_1def_pure_minigames_success(bot: Bot):
     """Test posting the minigames of a 1-Defence pure account."""
     for user in TEST_USERNAMES_1DEF_PURE:
@@ -254,7 +254,7 @@ async def test_1def_pure_minigames_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"MINIGAMES FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_1def_pure_minigames_failure(bot: Bot):
     """Test posting the minigames of a nonexistent 1-Defence pure account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-def-minigames {NONEXISTENT_USER}")
@@ -262,7 +262,7 @@ async def test_1def_pure_minigames_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_normal_bosses_success(bot: Bot):
     """Test posting the boss kills of a regular account."""
     for user in TEST_USERS:
@@ -271,7 +271,7 @@ async def test_normal_bosses_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"BOSS KILLS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_normal_bosses_failure(bot: Bot):
     """Test posting the boss kills of a nonexistent regular account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-bosses {NONEXISTENT_USER}")
@@ -279,7 +279,7 @@ async def test_normal_bosses_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ironman_bosses_success(bot: Bot):
     """Test posting the boss kills of an ironman account."""
     for user in TEST_USERNAMES_IRONMAN:
@@ -288,7 +288,7 @@ async def test_ironman_bosses_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"BOSS KILLS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ironman_bosses_failure(bot: Bot):
     """Test posting the boss kills of a nonexistent ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-im-bosses {NONEXISTENT_USER}")
@@ -296,7 +296,7 @@ async def test_ironman_bosses_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_hardcore_ironman_bosses_success(bot: Bot):
     """Test posting the boss kills of a hardcore ironman account."""
     for user in TEST_USERNAMES_HARDCORE:
@@ -305,7 +305,7 @@ async def test_hardcore_ironman_bosses_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"BOSS KILLS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_hardcore_ironman_bosses_failure(bot: Bot):
     """Test posting the boss kills of a nonexistent hardcore ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-hcim-bosses {NONEXISTENT_USER}")
@@ -313,7 +313,7 @@ async def test_hardcore_ironman_bosses_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ultimate_ironman_bosses_success(bot: Bot):
     """Test posting the boss kills of an ultimate ironman account."""
     for user in TEST_USERNAMES_ULTIMATE:
@@ -322,7 +322,7 @@ async def test_ultimate_ironman_bosses_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"BOSS KILLS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_ultimate_ironman_bosses_failure(bot: Bot):
     """Test posting the boss kills of a nonexistent ultimate ironman account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-uim-bosses {NONEXISTENT_USER}")
@@ -330,7 +330,7 @@ async def test_ultimate_ironman_bosses_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_skiller_bosses_success(bot: Bot):
     """Test posting the boss kills of a skiller account."""
     for user in TEST_USERNAMES_SKILLER:
@@ -339,7 +339,7 @@ async def test_skiller_bosses_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"BOSS KILLS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_skiller_bosses_failure(bot: Bot):
     """Test posting the boss kills of a nonexistent skiller account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-skiller-bosses {NONEXISTENT_USER}")
@@ -347,7 +347,7 @@ async def test_skiller_bosses_failure(bot: Bot):
     assert dpytest.verify().message().content("Hiscores not found."), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_1def_pure_bosses_success(bot: Bot):
     """Test posting the boss kills of a 1-Defence pure account."""
     for user in TEST_USERNAMES_1DEF_PURE:
@@ -356,7 +356,7 @@ async def test_1def_pure_bosses_success(bot: Bot):
         assert dpytest.verify().message().contains().content(f"BOSS KILLS FOR {user.upper()}"), message
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_1def_pure_bosses_failure(bot: Bot):
     """Test posting the boss kills of a nonexistent 1-Defence pure account."""
     await dpytest.message(f"{COMMAND_PREFIX}07hs-def-bosses {NONEXISTENT_USER}")

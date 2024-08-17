@@ -8,7 +8,7 @@ from growlery.config import BOSS_NAMES, MINIGAME_NAMES, SKILL_NAMES, AccountType
 class Table:
     """Used to generate ASCII tables."""
 
-    def __init__(self: Table,  # pylint: disable=R0913
+    def __init__(self,  # pylint: disable=R0913
                  header_text: str,
                  table_data: list[list[str]],
                  row_names: tuple[str, ...],
@@ -27,15 +27,16 @@ class Table:
         self.data_rows: list[list[str]] = []
         self.preprocess_data()
 
-    def preprocess_data(self: Table) -> None:
+    def preprocess_data(self) -> None:
         """Format the data to better suit our purposes."""
         for row_name, row_data in zip(self.row_names, self.table_data, strict=False):
 
-            if len(row_name) > self.longest_cells_per_col[self.col_names[0]]:
-                self.longest_cells_per_col[self.col_names[0]] = len(row_name)
+            self.longest_cells_per_col[self.col_names[0]] = max(
+                len(row_name),
+                self.longest_cells_per_col[self.col_names[0]],
+            )
             for col_name, col_value in zip(self.col_names[1:], row_data, strict=False):
-                if len(col_value) > self.longest_cells_per_col[col_name]:
-                    self.longest_cells_per_col[col_name] = len(col_value)
+                self.longest_cells_per_col[col_name] = max(len(col_value), self.longest_cells_per_col[col_name])
 
             if int(row_data[0]) >= 0:
                 self.data_rows.append([row_name, *row_data])
@@ -44,7 +45,7 @@ class Table:
             comma_count = max((self.longest_cells_per_col[col] - 1) // 3, 0)
             self.longest_cells_per_col[col] += comma_count
 
-    def columns_row_content(self: Table) -> str:
+    def columns_row_content(self) -> str:
         """Format the column header row."""
         return ' | '.join(
             f'{col:^{length}}'
@@ -52,11 +53,11 @@ class Table:
         )
 
     @property
-    def column_lengths(self: Table) -> list[int]:
+    def column_lengths(self) -> list[int]:
         """Return the lengths of the longest cells in each column."""
         return list(self.longest_cells_per_col.values())
 
-    def generate_header(self: Table) -> list[str]:
+    def generate_header(self) -> list[str]:
         """Generate the table header rows."""
         table_width = len(self.columns_row_content()) + 4
         column_row_content = '─┬─'.join(
@@ -73,7 +74,7 @@ class Table:
             column_row,
         ]
 
-    def generate_body(self: Table) -> tuple[list[str], list[str], list[str]]:
+    def generate_body(self) -> tuple[list[str], list[str], list[str]]:
         """Generate the table body."""
         # There is a current max boss limit of 51, so rows per page can be set to 17.
         max_row_per_page = 25  # NOTE: Refactor the whole mess and make this only apply to bosses
@@ -101,7 +102,7 @@ class Table:
                     second_row.pop()
         return body, second_row, third_row
 
-    def generate_footer(self: Table) -> str:
+    def generate_footer(self) -> str:
         """Generate the footer of the table."""
         content = '═╧═'.join(
             '═' * column_length
@@ -109,7 +110,7 @@ class Table:
         )
         return f'╚═{content}═╝'
 
-    def render_table(self: Table) -> str | tuple[str, ...]:
+    def render_table(self) -> str | tuple[str, ...]:
         """Return the full table with formatting."""
         # Checks if there is another page of data
         # In this case the second element in the tuple, which would be the second list of rows or page.
@@ -162,7 +163,7 @@ class Table:
 class SkillsTable(Table):
     """Used to create ASCII tables for skill hiscores."""
 
-    def __init__(self: SkillsTable,
+    def __init__(self,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
@@ -186,7 +187,7 @@ class SkillsTable(Table):
 class MinigamesTable(Table):
     """Used to create ASCII tables for minigame hiscores."""
 
-    def __init__(self: MinigamesTable,
+    def __init__(self,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,
@@ -211,7 +212,7 @@ class MinigamesTable(Table):
 class BossesTable(Table):
     """Used to create ASCII tables for boss hiscores."""
 
-    def __init__(self: BossesTable,
+    def __init__(self,
                  username: str,
                  account_type: AccountType,
                  account_type_name: AccountTypeName,

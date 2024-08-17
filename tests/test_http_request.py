@@ -6,7 +6,7 @@ from growlery.config import RUNESCAPE_HISCORES_LITE_URL
 from growlery.http_request import fetch_page_content
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_fetch_page_content_default_status():
     """Test fetching page content with defalt status messages."""
     assert await fetch_page_content(
@@ -18,13 +18,13 @@ async def test_fetch_page_content_default_status():
     )
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_fetch_page_content_bad_url():
     """Test error handling."""
     assert not await fetch_page_content(url="http://totallybrokenurlthisshouldnotwork.com")
 
 
-@pytest.mark.asyncio()
+@pytest.mark.asyncio
 async def test_fetch_page_content_non_ok_status():
     """Test fetching page content and handing a non-OK status."""
     assert not await fetch_page_content(url="https://httpstat.us/404")
