@@ -61,7 +61,7 @@ async def test_fetch_page_content_1def_default_status():
         url=RUNESCAPE_HISCORES_LITE_URL.format(
             hiscores='_oldschool',
             gamemode=AccountType.DEFENCE_PURE,
-            player_name='HCIMPrinessi',
+            player_name='1DefNoBank',
         ),
     )
 
