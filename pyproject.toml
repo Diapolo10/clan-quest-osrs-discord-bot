@@ -92,7 +92,7 @@ optional = true
 dpytest = "^0.7.0"
 pytest = "^8.3.3"
 pytest-asyncio = "^0.24.0"
-pytest-cov = "^5.0.0"
+pytest-cov = ">=5,<7"
 pytest-mock = "^3.14.0"
 tox = "^4.23.2"
 tox-gh-actions = "^3.2.0"
