@@ -27,102 +27,104 @@ logger = logging.getLogger(__name__)
 class Hiscores(commands.Cog):  # pylint: disable=R0904
     """Hiscore commands."""
 
-    @commands.command('07hs')
+    @commands.command("07hs")
     async def default_hiscores(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch default hiscores for the given username."""
         await self.reply_with_hiscores(ctx, username, AccountType.NORMAL, AccountTypeName.NORMAL)
 
-    @commands.command('07hs-im')
+    @commands.command("07hs-im")
     async def ironman_hiscores(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch ironman hiscores for the given username."""
         await self.reply_with_hiscores(ctx, username, AccountType.IRONMAN, AccountTypeName.IRONMAN)
 
-    @commands.command('07hs-hcim')
+    @commands.command("07hs-hcim")
     async def hardcore_ironman_hiscores(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch hardcore ironman hiscores for the given username."""
         await self.reply_with_hiscores(ctx, username, AccountType.HARDCORE_IRONMAN, AccountTypeName.HARDCORE_IRONMAN)
 
-    @commands.command('07hs-uim')
+    @commands.command("07hs-uim")
     async def ultimate_ironman_hiscores(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch ultimate ironman hiscores for the given username."""
         await self.reply_with_hiscores(ctx, username, AccountType.ULTIMATE_IRONMAN, AccountTypeName.ULTIMATE_IRONMAN)
 
-    @commands.command('07hs-skiller')
+    @commands.command("07hs-skiller")
     async def skiller_hiscores(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch skiller hiscores for the given username."""
         await self.reply_with_hiscores(ctx, username, AccountType.SKILLER, AccountTypeName.SKILLER)
 
-    @commands.command('07hs-def')
+    @commands.command("07hs-def")
     async def defence_pure_hiscores(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch 1 Defence hiscores for the given username."""
         await self.reply_with_hiscores(ctx, username, AccountType.DEFENCE_PURE, AccountTypeName.DEFENCE_PURE)
 
-    @commands.command('07hs-minigames')
+    @commands.command("07hs-minigames")
     async def default_minigames(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch default minigame hiscores for the given username."""
         await self.reply_with_minigames(ctx, username, AccountType.NORMAL, AccountTypeName.NORMAL)
 
-    @commands.command('07hs-im-minigames')
+    @commands.command("07hs-im-minigames")
     async def ironman_minigames(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch ironman minigame hiscores for the given username."""
         await self.reply_with_minigames(ctx, username, AccountType.IRONMAN, AccountTypeName.IRONMAN)
 
-    @commands.command('07hs-hcim-minigames')
+    @commands.command("07hs-hcim-minigames")
     async def hardcore_ironman_minigames(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch hardcore ironman minigame hiscores for the given username."""
         await self.reply_with_minigames(ctx, username, AccountType.HARDCORE_IRONMAN, AccountTypeName.HARDCORE_IRONMAN)
 
-    @commands.command('07hs-uim-minigames')
+    @commands.command("07hs-uim-minigames")
     async def ultimate_ironman_minigames(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch ultimate ironman minigame hiscores for the given username."""
         await self.reply_with_minigames(ctx, username, AccountType.ULTIMATE_IRONMAN, AccountTypeName.ULTIMATE_IRONMAN)
 
-    @commands.command('07hs-skiller-minigames')
+    @commands.command("07hs-skiller-minigames")
     async def skiller_minigames(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch skiller minigame hiscores for the given username."""
         await self.reply_with_minigames(ctx, username, AccountType.SKILLER, AccountTypeName.SKILLER)
 
-    @commands.command('07hs-def-minigames')
+    @commands.command("07hs-def-minigames")
     async def defence_pure_minigames(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch 1 Defence minigame hiscores for the given username."""
         await self.reply_with_minigames(ctx, username, AccountType.DEFENCE_PURE, AccountTypeName.DEFENCE_PURE)
 
-    @commands.command('07hs-bosses')
+    @commands.command("07hs-bosses")
     async def default_bosses(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch default boss hiscores for the given username."""
         await self.reply_with_bosses(ctx, username, AccountType.NORMAL, AccountTypeName.NORMAL)
 
-    @commands.command('07hs-im-bosses')
+    @commands.command("07hs-im-bosses")
     async def ironman_bosses(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch ironman boss hiscores for the given username."""
         await self.reply_with_bosses(ctx, username, AccountType.IRONMAN, AccountTypeName.IRONMAN)
 
-    @commands.command('07hs-hcim-bosses')
+    @commands.command("07hs-hcim-bosses")
     async def hardcore_ironman_bosses(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch hardcore ironman boss hiscores for the given username."""
         await self.reply_with_bosses(ctx, username, AccountType.HARDCORE_IRONMAN, AccountTypeName.HARDCORE_IRONMAN)
 
-    @commands.command('07hs-uim-bosses')
+    @commands.command("07hs-uim-bosses")
     async def ultimate_ironman_bosses(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch ultimate ironman boss hiscores for the given username."""
         await self.reply_with_bosses(ctx, username, AccountType.ULTIMATE_IRONMAN, AccountTypeName.ULTIMATE_IRONMAN)
 
-    @commands.command('07hs-skiller-bosses')
+    @commands.command("07hs-skiller-bosses")
     async def skiller_bosses(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch skiller boss hiscores for the given username."""
         await self.reply_with_bosses(ctx, username, AccountType.SKILLER, AccountTypeName.SKILLER)
 
-    @commands.command('07hs-def-bosses')
+    @commands.command("07hs-def-bosses")
     async def defence_pure_bosses(self: Hiscores, ctx: commands.Context, *, username: str | None = None) -> None:
         """Fetch 1 Defence boss hiscores for the given username."""
         await self.reply_with_bosses(ctx, username, AccountType.DEFENCE_PURE, AccountTypeName.DEFENCE_PURE)
 
     @classmethod
-    async def reply_with_hiscores(cls: type[Hiscores],
-                                  ctx: commands.Context,
-                                  username: str | None,
-                                  account_type: AccountType,
-                                  account_type_name: AccountTypeName) -> Message:
+    async def reply_with_hiscores(
+        cls: type[Hiscores],
+        ctx: commands.Context,
+        username: str | None,
+        account_type: AccountType,
+        account_type_name: AccountTypeName,
+    ) -> Message:
         """Reply to the chat with the given username's hiscores."""
         result = "Hiscores not found."
 
@@ -132,17 +134,19 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
 
         hiscores = await cls._fetch_hiscores(username, account_type)
 
-        if hiscores and not hiscores[0][0].startswith('<!DOCTYPE'):
+        if hiscores and not hiscores[0][0].startswith("<!DOCTYPE"):
             result = SkillsTable(username, account_type, account_type_name, hiscores).render_table()  # type: ignore[assignment]
 
         return await ctx.send(result)
 
     @classmethod
-    async def reply_with_minigames(cls: type[Hiscores],
-                                   ctx: commands.Context,
-                                   username: str | None,
-                                   account_type: AccountType,
-                                   account_type_name: AccountTypeName) -> Message:
+    async def reply_with_minigames(
+        cls: type[Hiscores],
+        ctx: commands.Context,
+        username: str | None,
+        account_type: AccountType,
+        account_type_name: AccountTypeName,
+    ) -> Message:
         """Reply to the chat with the given username's hiscores."""
         result = "Hiscores not found."
 
@@ -152,17 +156,19 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
 
         hiscores = await cls._fetch_hiscores(username, account_type)
 
-        if hiscores and not hiscores[0][0].startswith('<!DOCTYPE'):
+        if hiscores and not hiscores[0][0].startswith("<!DOCTYPE"):
             result = MinigamesTable(username, account_type, account_type_name, hiscores).render_table()  # type: ignore[assignment]
 
         return await ctx.send(result)
 
     @classmethod
-    async def reply_with_bosses(cls: type[Hiscores],
-                                ctx: commands.Context,
-                                username: str | None,
-                                account_type: AccountType,
-                                account_type_name: AccountTypeName) -> Message | None:
+    async def reply_with_bosses(
+        cls: type[Hiscores],
+        ctx: commands.Context,
+        username: str | None,
+        account_type: AccountType,
+        account_type_name: AccountTypeName,
+    ) -> Message | None:
         """Reply to the chat with the given username's hiscores."""
         result = "Hiscores not found."
 
@@ -171,7 +177,7 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
             return await ctx.send(result)
 
         hiscores = await cls._fetch_hiscores(username, account_type)
-        if hiscores and not hiscores[0][0].startswith('<!DOCTYPE'):
+        if hiscores and not hiscores[0][0].startswith("<!DOCTYPE"):
             menu = ViewMenu(ctx, menu_type=ViewMenu.TypeText)
             result = BossesTable(username, account_type, account_type_name, hiscores).render_table()  # type: ignore[assignment]
             if isinstance(result, str):
@@ -191,7 +197,7 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
     async def _fetch_hiscores(username: str, account_type: AccountType) -> list[list[str]] | None:
         """Handle fetching the hiscores for RuneScape accounts."""
         url: str = RUNESCAPE_HISCORES_LITE_URL.format(
-            hiscores='_oldschool',
+            hiscores="_oldschool",
             gamemode=account_type.value,
             player_name=quote(username),
         )
@@ -201,7 +207,4 @@ class Hiscores(commands.Cog):  # pylint: disable=R0904
 
         csv_data = await fetch_page_content(url=url, status_message_override=status_messages)
 
-        return [
-            row.split(',')
-            for row in csv_data.strip().splitlines()
-        ]
+        return [row.split(",") for row in csv_data.strip().splitlines()]

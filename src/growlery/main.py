@@ -16,7 +16,7 @@ from growlery.config import (
     LOG_FILES,
 )
 
-logging.config.fileConfig(LOG_CONFIG, disable_existing_loggers=False, defaults={'logfilename': str(LOG_FILES)})
+logging.config.fileConfig(LOG_CONFIG, disable_existing_loggers=False, defaults={"logfilename": str(LOG_FILES)})
 logger = logging.getLogger(__name__)
 
 
@@ -42,7 +42,7 @@ class MyBot(commands.Bot):
         await self.process_commands(message)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     intents = discord.Intents.default()
     intents.message_content = True
 
