@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 async def fetch_page_content(url: str, status_message_override: dict[HTTPStatus, str] | None = None) -> str:
     """Fetch the content from a given web address."""
-    result = ''
+    result = ""
     status_message = {
         HTTPStatus.NOT_FOUND: "Could not find resource.",
     }
@@ -20,7 +20,6 @@ async def fetch_page_content(url: str, status_message_override: dict[HTTPStatus,
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get(url=url) as request:
-
                 if request.status == HTTPStatus.OK:
                     result = await request.text()
 

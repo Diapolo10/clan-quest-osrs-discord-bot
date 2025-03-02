@@ -135,7 +135,7 @@ asyncio_mode = "auto"
 [tool.ruff]
 lint.select = ["ALL"]
 lint.ignore = [
-    "ANN101",  # Type annotation for `self`
+    "COM812",  # Disabled due to formatter conflict
     "D203",    # One blank line before class docstring
     "D212",    # Multi-line summary first line
     "PLR0913", # Too many arguments

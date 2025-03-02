@@ -1,7 +1,8 @@
 """Test hiscores functionality."""
 
-import pytest
 from http import HTTPStatus
+
+import pytest
 
 from growlery.config import RUNESCAPE_HISCORES_LITE_URL, AccountType
 from growlery.http_request import fetch_page_content
@@ -13,9 +14,9 @@ async def test_fetch_page_content_default_status():
     """Test fetching page content with defalt status messages."""
     assert await fetch_page_content(
         url=RUNESCAPE_HISCORES_LITE_URL.format(
-            hiscores='_oldschool',
-            gamemode='',
-            player_name='Ironman-Dia',
+            hiscores="_oldschool",
+            gamemode="",
+            player_name="Ironman-Dia",
         ),
     )
 
@@ -26,9 +27,9 @@ async def test_fetch_page_content_ironman_default_status():
     """Test fetching page content with defalt status messages."""
     assert await fetch_page_content(
         url=RUNESCAPE_HISCORES_LITE_URL.format(
-            hiscores='_oldschool',
+            hiscores="_oldschool",
             gamemode=AccountType.IRONMAN,
-            player_name='Ironman-Dia',
+            player_name="Ironman-Dia",
         ),
     )
 
@@ -39,9 +40,9 @@ async def test_fetch_page_content_ultimate_ironman_default_status():
     """Test fetching page content with defalt status messages."""
     assert await fetch_page_content(
         url=RUNESCAPE_HISCORES_LITE_URL.format(
-            hiscores='_oldschool',
+            hiscores="_oldschool",
             gamemode=AccountType.ULTIMATE_IRONMAN,
-            player_name='Ironman-Dia',
+            player_name="Ironman-Dia",
         ),
     )
 
@@ -52,9 +53,9 @@ async def test_fetch_page_content_hardcore_default_status():
     """Test fetching page content with defalt status messages."""
     assert await fetch_page_content(
         url=RUNESCAPE_HISCORES_LITE_URL.format(
-            hiscores='_oldschool',
+            hiscores="_oldschool",
             gamemode=AccountType.HARDCORE_IRONMAN,
-            player_name='HCIMPrinessi',
+            player_name="HCIMPrinessi",
         ),
     )
 
@@ -65,9 +66,9 @@ async def test_fetch_page_content_1def_default_status():
     """Test fetching page content with defalt status messages."""
     assert await fetch_page_content(
         url=RUNESCAPE_HISCORES_LITE_URL.format(
-            hiscores='_oldschool',
+            hiscores="_oldschool",
             gamemode=AccountType.DEFENCE_PURE,
-            player_name='1DefNoBank',
+            player_name="1DefNoBank",
         ),
     )
 
@@ -78,9 +79,9 @@ async def test_fetch_page_content_skiller_default_status():
     """Test fetching page content with defalt status messages."""
     assert await fetch_page_content(
         url=RUNESCAPE_HISCORES_LITE_URL.format(
-            hiscores='_oldschool',
+            hiscores="_oldschool",
             gamemode=AccountType.SKILLER,
-            player_name='Lvl3 Coach',
+            player_name="Lvl3 Coach",
         ),
     )
 
