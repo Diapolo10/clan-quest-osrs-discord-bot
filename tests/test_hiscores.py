@@ -13,7 +13,7 @@ from growlery.config import (
 BOSS_USER = "bendzo"
 HCIM_USER = "HCIMPrinessi"
 NONEXISTENT_USER = "Idonotexistandneverwill"
-SKILLER_USER = "Lvl-3"
+SKILLER_USER = "Lvl3 Coach"
 UIM_1DEF_USER = "1DefNoBank"
 
 
