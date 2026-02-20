@@ -1293,14 +1293,14 @@ markers = {dev = "python_version == \"3.10\"", tests = "python_full_version <= \
 
 [[package]]
 name = "tox"
-version = "4.41.0"
+version = "4.43.0"
 description = "tox is a generic virtualenv management and test command line tool"
 optional = false
 python-versions = ">=3.10"
 groups = ["tests"]
 files = [
-    {file = "tox-4.41.0-py3-none-any.whl", hash = "sha256:9579cc7b2c4c0d465e70f91f7897a6d58d6509cdadf20f75ade3510c0b7ce96a"},
-    {file = "tox-4.41.0.tar.gz", hash = "sha256:58c82bd68d970abc0fd001ca413b10e7422cd83d13f25580f658afab61a85f86"},
+    {file = "tox-4.43.0-py3-none-any.whl", hash = "sha256:d3fbded7dc5314cfb4e4d43b04ffbd46c8fbf323fe2d9190adcd4832894af208"},
+    {file = "tox-4.43.0.tar.gz", hash = "sha256:fbb35f32ef628c57eda168b448829050f987f4d6f153fa2b87c4238e19ab4bd7"},
 ]
 
 [package.dependencies]
