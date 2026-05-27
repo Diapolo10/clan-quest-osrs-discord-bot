@@ -1,54 +1,17 @@
 [build-system]
-requires = ["poetry-core>=1.0.0", "wheel",]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling", "uv-dynamic-versioning>=0.7.0"]
+build-backend = "hatchling.build"
 
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: not covered",
-    "@overload",
-    "if TYPE_CHECKING:"
-]
-
-
-[tool.coverage.run]
-branch = true
-relative_files = true
-omit = [
-    ".tox/*",
-    "tests/*",
-    "main.py",
-    "__main__.py",
-]
-
-
-[tool.poetry]
+[project]
 name = "growlery"
-version = "0.3.1"
+dynamic = ["version"]
 description = "An OSRS Discord bot for Clan Quest."
-
-packages = [
-    { include = "growlery", from = "src" },
-]
-
-authors = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
-maintainers = ["Lari Liuhamo <lari.liuhamo+pypi@gmail.com>",]
-
-include = []
-license = "MIT"
+authors = [{ name = "Lari Liuhamo", email = "lari.liuhamo+pypi@gmail.com" }]
+requires-python = ">=3.11"
 readme = "README.md"
-
-homepage = "https://pypi.org/project/clan-quest-osrs-discord-bot/"
-repository = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot"
-documentation = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/tree/main/docs"
-
-keywords = [
-    "python3",
-    "discord",
-    "runescape",
-    "osrs",
-    "oldschool",
-]
+license = "MIT"
+maintainers = [{ name = "Lari Liuhamo", email = "lari.liuhamo+pypi@gmail.com" }]
+keywords = ["python3", "discord", "runescape", "osrs", "oldschool"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -61,8 +24,10 @@ classifiers = [
     "Operating System :: Microsoft :: Windows :: Windows 10",
     "Operating System :: Microsoft :: Windows :: Windows 11",
     "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
     "Topic :: Communications :: Chat",
@@ -70,67 +35,70 @@ classifiers = [
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
-
-
-[tool.poetry.dependencies]
-python = "^3.10"
-aiohttp = "^3.10.3"
-"discord.py" = "^2.4.0"
-python-dotenv = "^1.0.1"
-reactionmenu = "^3.1.7"
-
-
-[tool.poetry.group.dev.dependencies]
-mypy = ">=1.13,<3.0"
-
-
-[tool.poetry.group.linters]
-optional = true
-
-
-[tool.poetry.group.linters.dependencies]
-ruff = ">=0.9.10,<0.16.0"
-
-
-[tool.poetry.group.tests]
-optional = true
-
-
-[tool.poetry.group.tests.dependencies]
-dpytest = "^0.7.0"
-pytest = ">=8.3.3,<10.0.0"
-pytest-asyncio = ">=0.24,<1.5"
-pytest-cov = ">=5,<8"
-pytest-mock = "^3.14.0"
-pytest-rerunfailures = ">=15,<17"
-tox = "^4.23.2"
-tox-gh-actions = "^3.2.0"
-
-
-[tool.poetry.urls]
-"Tracker" = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/issues"
-"Changelog" = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/blob/main/CHANGELOG.md"
-
-
-[tool.pytest.ini_options]
-minversion = "6.0"
-addopts = """
---doctest-modules \
---cov=./ \
---cov-append \
---cov-report html:tests/reports/coverage-html \
---cov-report xml:tests/reports/coverage.xml \
---ignore=docs/
-"""
-testpaths = [
-    "tests",
+dependencies = [
+    "aiohttp>=3.13.5",
+    "discord.py>=2.7.1",
+    "python-dotenv>=1.2.2",
+    "reactionmenu>=3.1.7",
 ]
-filterwarnings = [
-    "ignore::DeprecationWarning:discord*:"
+
+[project.urls]
+Homepage = "https://pypi.org/project/clan-quest-osrs-discord-bot/"
+Repository = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot"
+Documentation = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/tree/main/docs"
+Tracker = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/issues"
+Changelog = "https://github.com/Diapolo10/clan-quest-osrs-discord-bot/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = [
+    "dpytest>=0.7.0,<0.8",
+    "mypy>=1.13,<3.0",
+    "pytest>=8.3.3,<10.0.0",
+    "pytest-asyncio>=0.24,<1.5",
+    "pytest-cov>=5,<8",
+    "pytest-mock>=3.14.0,<4",
+    "pytest-rerunfailures>=15,<17",
+    "ruff>=0.9.10,<0.16.0",
+    "tox>=4.23.2,<5",
+    "tox-gh-actions>=3.2.0,<4",
 ]
+
+[tool.coverage.report]
+exclude_also = ["pragma: not covered", "@overload", "if TYPE_CHECKING:"]
+
+[tool.coverage.run]
+branch = true
+relative_files = true
+omit = [".tox/*", "tests/*", "main.py", "__main__.py"]
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.mypy]
+exclude = ["tests/"]
+exclude_gitignore = true
+strict = true
+strict_equality = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.pytest]
+minversion = "9.0"
+addopts = [
+    "--doctest-modules",
+    "--cov=./",
+    "--cov-append",
+    "--cov-fail-under=80",
+    "--cov-report=html:tests/reports/coverage-html",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-report=xml:tests/reports/coverage.xml",
+    "--ignore=docs/",
+]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning:discord*:"]
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
-
 
 [tool.ruff]
 lint.select = ["ALL"]
@@ -138,64 +106,71 @@ lint.ignore = [
     "COM812",  # Disabled due to formatter conflict
     "D203",    # One blank line before class docstring
     "D212",    # Multi-line summary first line
+    "ISC001",  # Single-line implicit string concatenation (disabled due to formatter conflict)
     "PLR0913", # Too many arguments
     "Q000",    # Single quotes found but double quotes preferred
 ]
 line-length = 120
-# preview = true
 show-fixes = true
-src = ["src",]
-target-version = "py310"
-
 
 [tool.ruff.lint.flake8-copyright]
 author = "Lari Liuhamo"
-
 
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
 multiline-quotes = "double"
 
-
 [tool.ruff.lint.mccabe]
-max-complexity = 10
-
+max-complexity = 15
 
 [tool.ruff.lint.per-file-ignores]
 # https://beta.ruff.rs/docs/rules/
-"__init__.py" = ["F401", "F403", "F405",]
-"tests/*" = ["ANN", "ARG", "INP001", "PT011", "S101", "PLR2004",]
-
+"__init__.py" = ["F401", "F403", "F405", "PGH003"]
+"tests/*" = ["ANN", "ARG", "INP001", "PLR2004", "PT011", "S101"]
 
 [tool.ruff.lint.pylint]
 max-args = 15
 max-branches = 20
-max-returns = 10
+max-returns = 15
 max-statements = 80
-
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
 
-
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py310, py311, py312, py313, pypy3
+envlist = py3{11, 12, 13, 14}, pypy3
+skip_missing_interpreters = true
 
 [gh-actions]
 python =
-    3.10: py310
     3.11: py311
     3.12: py312
     3.13: py313
-    pypy-3.10: pypy3
+    3.14: py314
+    pypy-3.11: pypy3
 
 [testenv]
-passenv = GITHUB_*
-allowlist_externals = poetry
+pass_env =
+    GITHUB_*
+    FORCE_COLOR
+allowlist_externals = uv
 
 commands =
-    poetry run pytest
-    poetry run coverage report
+    uv run --active --frozen pytest
+    uv run --active --frozen coverage report
 """
+
+[tool.uv]
+cache-keys = [
+    { file = "pyproject.toml" },
+    { git = { commit = true, tags = true } },
+]
+constraint-dependencies = ["pygments>=2.20.0"]
+
+[tool.uv-dynamic-versioning]
+bump = true
+fallback-version = "0.0.0"
+style = "pep440"
+vcs = "git"

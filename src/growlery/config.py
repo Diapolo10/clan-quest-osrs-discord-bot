@@ -1,7 +1,7 @@
 """Global configuration settings for the Discord bot."""
 
 import os
-from enum import Enum
+from enum import StrEnum
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -145,7 +145,7 @@ RUNESCAPE_HISCORES_LITE_URL = (
 )
 
 
-class AccountType(str, Enum):
+class AccountType(StrEnum):
     """Specify different supported account types."""
 
     NORMAL = ""
@@ -156,7 +156,7 @@ class AccountType(str, Enum):
     DEFENCE_PURE = "_skiller_defence"
 
 
-class AccountTypeName(str, Enum):
+class AccountTypeName(StrEnum):
     """Specify names for different supported account types."""
 
     NORMAL = ""

@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING
 from urllib.parse import quote
 
 from discord.ext import commands
-from reactionmenu import ViewButton, ViewMenu  # type: ignore[import]
+from reactionmenu import ViewButton, ViewMenu  # type: ignore[import-untyped]
 
 if TYPE_CHECKING:
     from discord.message import Message
