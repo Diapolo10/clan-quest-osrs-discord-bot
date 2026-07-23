@@ -58,7 +58,7 @@ dev = [
     "pytest-cov>=5,<8",
     "pytest-mock>=3.14.0,<4",
     "pytest-rerunfailures>=15,<17",
-    "ruff>=0.9.10,<0.16.0",
+    "ruff>=0.9.10,<0.17.0",
     "tox>=4.23.2,<5",
     "tox-gh-actions>=3.2.0,<4",
 ]
