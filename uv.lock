@@ -463,7 +463,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "aiohttp", specifier = ">=3.13.5" },
+    { name = "aiohttp", specifier = ">=3.14.3" },
     { name = "discord-py", specifier = ">=2.7.1" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "reactionmenu", specifier = ">=3.1.7" },
@@ -471,16 +471,16 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "dpytest", specifier = ">=0.7.0,<0.8" },
-    { name = "mypy", specifier = ">=1.13,<3.0" },
-    { name = "pytest", specifier = ">=8.3.3,<10.0.0" },
-    { name = "pytest-asyncio", specifier = ">=0.24,<1.5" },
-    { name = "pytest-cov", specifier = ">=5,<8" },
-    { name = "pytest-mock", specifier = ">=3.14.0,<4" },
-    { name = "pytest-rerunfailures", specifier = ">=15,<17" },
-    { name = "ruff", specifier = ">=0.9.10,<0.17.0" },
-    { name = "tox", specifier = ">=4.23.2,<5" },
-    { name = "tox-gh-actions", specifier = ">=3.2.0,<4" },
+    { name = "dpytest", specifier = ">=0.7.0" },
+    { name = "mypy", specifier = ">=2.3.0" },
+    { name = "pytest", specifier = ">=9.1.1" },
+    { name = "pytest-asyncio", specifier = ">=1.4.0" },
+    { name = "pytest-cov", specifier = ">=7.1.0" },
+    { name = "pytest-mock", specifier = ">=3.14.0" },
+    { name = "pytest-rerunfailures", specifier = ">=16.4" },
+    { name = "ruff", specifier = ">=0.9.10" },
+    { name = "tox", specifier = ">=4.23.2" },
+    { name = "tox-gh-actions", specifier = ">=3.2.0" },
 ]
 
 [[package]]
